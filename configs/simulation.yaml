@@ -1,0 +1,42 @@
+project:
+  name: "INDUSGUARD-ADT"
+
+simulation:
+  total_measurements: 200
+  normal_end_index: 100
+  degradation_end_index: 160
+  interval_seconds: 60
+  random_seed: 42
+  equipment_id: "BEARING-001"
+
+normal_state:
+  vibration_mean: 2.0
+  vibration_std: 0.15
+  temperature_mean: 40.0
+  temperature_std: 0.8
+  speed_mean: 1500.0
+  speed_std: 15.0
+  load_mean: 65.0
+  load_std: 3.0
+  health_min: 90.0
+  health_max: 100.0
+
+degradation_state:
+  vibration_start: 2.5
+  vibration_end: 6.0
+  temperature_start: 42.0
+  temperature_end: 60.0
+  health_start: 90.0
+  health_end: 50.0
+
+critical_state:
+  vibration_start: 6.0
+  vibration_end: 9.0
+  temperature_start: 60.0
+  temperature_end: 75.0
+  health_start: 50.0
+  health_end: 15.0
+
+output:
+  csv_path: "data/synthetic/bearing_scenario_001.csv"
+  plots_directory: "outputs/plots"
