@@ -1,0 +1,2 @@
+from . import MessageHandlingBehaviour
+ResourceContractNetBehaviour=MessageHandlingBehaviour

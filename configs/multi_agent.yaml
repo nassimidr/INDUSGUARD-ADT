@@ -1,0 +1,53 @@
+runtime:
+  mode: embedded
+  embedded_xmpp_server: true
+  auto_register: true
+  shutdown_timeout_seconds: 20
+xmpp:
+  domain: localhost
+  client_port: 5222
+  server_port: 5269
+  admin_port: 9090
+agents:
+  sensor: {jid: sensor@localhost, enabled: true}
+  anomaly: {jid: anomaly@localhost, enabled: true}
+  diagnosis: {jid: diagnosis@localhost, enabled: true}
+  rul: {jid: rul@localhost, enabled: true}
+  maintenance: {jid: maintenance@localhost, enabled: true}
+  resource: {jid: resource@localhost, enabled: true}
+  supervisor: {jid: supervisor@localhost, enabled: true}
+  alert: {jid: alert@localhost, enabled: true}
+  historian: {jid: historian@localhost, enabled: true}
+simulation:
+  input_path: data/synthetic/industrial_line_scenario.csv
+  mode: accelerated
+  speed_factor: 20
+  max_measurements: 1000
+  start_row: 0
+  equipment_filter: null
+  scenario_filter: null
+timeouts:
+  message_seconds: 10
+  diagnosis_seconds: 20
+  rul_seconds: 20
+  resource_proposal_seconds: 15
+  pipeline_seconds: 60
+retries:
+  maximum_attempts: 3
+  initial_delay_seconds: 0.1
+  backoff_factor: 2
+  maximum_delay_seconds: 2
+heartbeats:
+  enabled: true
+  interval_seconds: 5
+  unhealthy_after_seconds: 20
+idempotency:
+  enabled: true
+  cache_size: 5000
+  ttl_seconds: 3600
+messages:
+  schema_version: "1.0"
+  maximum_body_bytes: 262144
+outputs:
+  directory: outputs/multi_agent
+  plots_directory: outputs/plots/multi_agent

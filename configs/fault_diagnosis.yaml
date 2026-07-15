@@ -1,0 +1,120 @@
+paths:
+  data: data/synthetic/industrial_line_scenario.csv
+  anomaly_config: configs/anomaly_detection.yaml
+  models_directory: outputs/models/fault_diagnosis
+  predictions: outputs/diagnosis/fault_diagnosis_predictions.csv
+  metrics: outputs/diagnosis/diagnosis_metrics.json
+  plots_directory: outputs/plots/fault_diagnosis
+
+features:
+  motor: [temperature, vibration, rpm, current, load, health_score]
+  bearing: [temperature, vibration, rpm, health_score]
+  conveyor: [temperature, vibration, load, conveyor_speed, slip_rate, health_score]
+  pump: [temperature, vibration, current, pressure, flow_rate, health_score]
+
+model:
+  n_estimators: 180
+  max_depth: 10
+  min_samples_leaf: 2
+  random_seed: 42
+  test_size: 0.25
+
+confidence:
+  minimum_rule: 0.65
+  minimum_final: 0.65
+
+severity_levels: [none, low, medium, high, critical]
+
+rules:
+  motor:
+    - fault: motor_overheating
+      min_matches: 2
+      conditions:
+        - {sensor: temperature, min: 68.0, weight: 2.0}
+        - {sensor: current, min: 24.0, weight: 1.0}
+        - {sensor: load, min: 75.0, weight: 1.0}
+    - fault: motor_overload
+      min_matches: 2
+      conditions:
+        - {sensor: load, min: 78.0, weight: 2.0}
+        - {sensor: current, min: 23.0, weight: 2.0}
+        - {sensor: rpm, max: 1420.0, weight: 1.0}
+    - fault: motor_electrical_fault
+      min_matches: 2
+      conditions:
+        - {sensor: current, min: 27.0, weight: 2.0}
+        - {sensor: temperature, min: 60.0, weight: 1.0}
+    - fault: motor_speed_loss
+      min_matches: 1
+      conditions:
+        - {sensor: rpm, max: 1400.0, weight: 2.0}
+        - {sensor: vibration, min: 3.5, weight: 1.0}
+  bearing:
+    - fault: bearing_severe_damage
+      min_matches: 2
+      conditions:
+        - {sensor: vibration, min: 7.0, weight: 2.0}
+        - {sensor: health_score, max: 40.0, weight: 2.0}
+        - {sensor: temperature, min: 60.0, weight: 1.0}
+    - fault: bearing_overheating
+      min_matches: 2
+      conditions:
+        - {sensor: temperature, min: 55.0, weight: 2.0}
+        - {sensor: vibration, min: 5.0, weight: 1.0}
+    - fault: bearing_wear
+      min_matches: 2
+      conditions:
+        - {sensor: vibration, min: 3.5, weight: 2.0}
+        - {sensor: health_score, max: 80.0, weight: 2.0}
+        - {sensor: temperature, min: 45.0, weight: 1.0}
+  conveyor:
+    - fault: conveyor_motor_overheating
+      min_matches: 2
+      conditions:
+        - {sensor: temperature, min: 58.0, weight: 2.0}
+        - {sensor: vibration, min: 3.0, weight: 1.0}
+        - {sensor: load, min: 70.0, weight: 1.0}
+    - fault: conveyor_slippage
+      min_matches: 2
+      conditions:
+        - {sensor: slip_rate, min: 11.0, weight: 2.0}
+        - {sensor: conveyor_speed, max: 1.60, weight: 2.0}
+    - fault: conveyor_speed_fault
+      min_matches: 2
+      conditions:
+        - {sensor: conveyor_speed, max: 1.35, weight: 2.0}
+        - {sensor: slip_rate, min: 8.0, weight: 1.0}
+    - fault: conveyor_overload
+      min_matches: 2
+      conditions:
+        - {sensor: load, min: 65.0, weight: 2.0}
+        - {sensor: slip_rate, min: 5.0, weight: 1.0}
+        - {sensor: temperature, min: 50.0, weight: 1.0}
+  pump:
+    - fault: pump_overheating
+      min_matches: 2
+      conditions:
+        - {sensor: temperature, min: 65.0, weight: 2.0}
+        - {sensor: current, min: 20.0, weight: 1.0}
+    - fault: pump_blockage
+      min_matches: 2
+      conditions:
+        - {sensor: flow_rate, max: 75.0, weight: 2.0}
+        - {sensor: pressure, min: 7.0, weight: 2.0}
+        - {sensor: current, min: 18.5, weight: 1.0}
+    - fault: pump_cavitation
+      min_matches: 2
+      conditions:
+        - {sensor: vibration, min: 2.7, weight: 2.0}
+        - {sensor: flow_rate, max: 105.0, weight: 2.0}
+        - {sensor: pressure, max: 7.0, weight: 1.0}
+    - fault: pump_leakage
+      min_matches: 2
+      conditions:
+        - {sensor: flow_rate, max: 90.0, weight: 2.0}
+        - {sensor: pressure, max: 4.5, weight: 2.0}
+    - fault: pump_bearing_fault
+      min_matches: 2
+      conditions:
+        - {sensor: vibration, min: 4.0, weight: 2.0}
+        - {sensor: temperature, min: 52.0, weight: 1.0}

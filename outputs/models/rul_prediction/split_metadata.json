@@ -1,0 +1,102 @@
+{
+  "train_runs": {
+    "motor": [
+      "motor_run_003",
+      "motor_run_004",
+      "motor_run_005",
+      "motor_run_006",
+      "motor_run_007",
+      "motor_run_008",
+      "motor_run_010",
+      "motor_run_011",
+      "motor_run_012",
+      "motor_run_013",
+      "motor_run_014",
+      "motor_run_015",
+      "motor_run_017",
+      "motor_run_019",
+      "motor_run_020"
+    ],
+    "bearing": [
+      "bearing_run_003",
+      "bearing_run_004",
+      "bearing_run_005",
+      "bearing_run_006",
+      "bearing_run_007",
+      "bearing_run_008",
+      "bearing_run_010",
+      "bearing_run_011",
+      "bearing_run_012",
+      "bearing_run_013",
+      "bearing_run_014",
+      "bearing_run_015",
+      "bearing_run_017",
+      "bearing_run_019",
+      "bearing_run_020"
+    ],
+    "conveyor": [
+      "conveyor_run_003",
+      "conveyor_run_004",
+      "conveyor_run_005",
+      "conveyor_run_006",
+      "conveyor_run_007",
+      "conveyor_run_008",
+      "conveyor_run_010",
+      "conveyor_run_011",
+      "conveyor_run_012",
+      "conveyor_run_013",
+      "conveyor_run_014",
+      "conveyor_run_015",
+      "conveyor_run_017",
+      "conveyor_run_019",
+      "conveyor_run_020"
+    ],
+    "pump": [
+      "pump_run_003",
+      "pump_run_004",
+      "pump_run_005",
+      "pump_run_006",
+      "pump_run_007",
+      "pump_run_008",
+      "pump_run_010",
+      "pump_run_011",
+      "pump_run_012",
+      "pump_run_013",
+      "pump_run_014",
+      "pump_run_015",
+      "pump_run_017",
+      "pump_run_019",
+      "pump_run_020"
+    ]
+  },
+  "test_runs": {
+    "motor": [
+      "motor_run_001",
+      "motor_run_002",
+      "motor_run_009",
+      "motor_run_016",
+      "motor_run_018"
+    ],
+    "bearing": [
+      "bearing_run_001",
+      "bearing_run_002",
+      "bearing_run_009",
+      "bearing_run_016",
+      "bearing_run_018"
+    ],
+    "conveyor": [
+      "conveyor_run_001",
+      "conveyor_run_002",
+      "conveyor_run_009",
+      "conveyor_run_016",
+      "conveyor_run_018"
+    ],
+    "pump": [
+      "pump_run_001",
+      "pump_run_002",
+      "pump_run_009",
+      "pump_run_016",
+      "pump_run_018"
+    ]
+  }
+}

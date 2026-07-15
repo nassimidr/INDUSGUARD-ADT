@@ -1,0 +1,42 @@
+simulation:
+  steps_per_scenario: 100
+  interval_seconds: 60
+  random_seed: 42
+  start_timestamp: "2026-01-01T00:00:00"
+  scenario: all
+
+scenarios:
+  - {id: scenario_1_normal, type: normal}
+  - {id: scenario_2_bearing, type: bearing_degradation}
+  - {id: scenario_3_overload, type: conveyor_overload}
+  - {id: scenario_4_pump, type: pump_anomaly}
+  - {id: scenario_5_cascade, type: cascade_failure}
+
+equipment:
+  motor:
+    normal: {temperature: 48.0, vibration: 1.8, rpm: 1500.0, current: 18.0, load: 55.0}
+    noise: {temperature: 0.7, vibration: 0.12, rpm: 10.0, current: 0.35, load: 1.2}
+    thresholds: {degradation_temperature: 60.0, critical_temperature: 72.0}
+  bearing:
+    normal: {temperature: 40.0, vibration: 2.0, rpm: 1500.0}
+    noise: {temperature: 0.6, vibration: 0.12, rpm: 9.0}
+    thresholds: {degradation_vibration: 4.0, critical_vibration: 7.0}
+  conveyor:
+    normal: {temperature: 43.0, vibration: 1.5, load: 45.0, conveyor_speed: 1.8, slip_rate: 1.5}
+    noise: {temperature: 0.6, vibration: 0.1, load: 1.0, conveyor_speed: 0.025, slip_rate: 0.2}
+    thresholds: {degradation_slip_rate: 6.0, critical_slip_rate: 14.0}
+  pump:
+    normal: {temperature: 46.0, vibration: 1.6, current: 14.0, pressure: 5.0, flow_rate: 120.0}
+    noise: {temperature: 0.7, vibration: 0.1, current: 0.25, pressure: 0.08, flow_rate: 1.2}
+    thresholds: {degradation_flow_rate: 90.0, critical_flow_rate: 55.0}
+
+dependencies:
+  conveyor_to_motor_load: 1.0
+  bearing_to_motor_vibration: 0.45
+  bearing_to_motor_degradation: 0.35
+  motor_to_conveyor_degradation: 0.25
+
+output:
+  csv_path: data/synthetic/industrial_line_scenario.csv
+  plots_directory: outputs/plots/industrial_line
+

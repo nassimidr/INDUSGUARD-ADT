@@ -1,0 +1,220 @@
+paths:
+  diagnosis: outputs/diagnosis/fault_diagnosis_predictions.csv
+  rul: outputs/rul_predictions/rul_predictions.csv
+  anomalies: outputs/predictions/anomaly_predictions.csv
+  resources: configs/maintenance_resources.yaml
+  recommendations: outputs/maintenance/maintenance_recommendations.csv
+  work_orders: outputs/maintenance/work_orders.csv
+  schedule: outputs/maintenance/maintenance_schedule.csv
+  metrics: outputs/maintenance/maintenance_metrics.json
+  plots_directory: outputs/plots/maintenance_planning
+
+priority_weights:
+  severity: 0.25
+  rul: 0.25
+  risk: 0.20
+  cascade: 0.10
+  safety: 0.08
+  production_impact: 0.07
+  confidence: 0.05
+
+severity_scores: {none: 0, low: 0.25, medium: 0.50, high: 0.75, critical: 1.0}
+risk_scores: {low: 0.15, medium: 0.45, high: 0.75, critical: 1.0}
+priority_thresholds: {medium: 25, high: 50, urgent: 75, critical: 90}
+rul_thresholds: {immediate: 5, urgent: 10, close: 25, planned: 50}
+safety_margin: {default: 0.25, low_confidence: 0.40, critical: 0.55}
+confidence_threshold: 0.60
+random_seed: 42
+
+catalog:
+  normal:
+    strategy: monitor
+    action: Continuer la surveillance périodique
+    secondary_actions: [Vérifier les tendances lors de la prochaine ronde]
+    skills: [mechanical_technician]
+    required_parts: []
+    optional_parts: []
+    duration_hours: 0.5
+    shutdown_required: false
+    inspection_required: false
+  unknown_fault:
+    strategy: inspect
+    action: Effectuer une inspection approfondie et collecter davantage de données
+    secondary_actions: [Vérifier les capteurs, Consulter un expert]
+    skills: [maintenance_supervisor, automation_technician]
+    required_parts: []
+    optional_parts: [sensor]
+    duration_hours: 2.0
+    shutdown_required: false
+    inspection_required: true
+  cascade_failure:
+    strategy: emergency_shutdown
+    action: Arrêter et isoler les équipements concernés
+    secondary_actions: [Identifier l'origine, Inspecter les équipements voisins]
+    skills: [maintenance_supervisor, mechanical_technician, electrical_technician, safety_officer]
+    required_parts: []
+    optional_parts: [industrial_bearing, drive_belt, sensor]
+    duration_hours: 5.0
+    shutdown_required: true
+    inspection_required: true
+  motor_overheating:
+    strategy: preventive_maintenance
+    action: Vérifier et remettre en état le refroidissement du moteur
+    secondary_actions: [Nettoyer les entrées d'air, Contrôler le courant et la charge]
+    skills: [electrical_technician, mechanical_technician]
+    required_parts: [motor_fan]
+    optional_parts: [sensor]
+    duration_hours: 2.5
+    shutdown_required: true
+    inspection_required: true
+  motor_overload:
+    strategy: preventive_maintenance
+    action: Réduire la charge et éliminer les blocages mécaniques
+    secondary_actions: [Inspecter le convoyeur, Contrôler l'alimentation]
+    skills: [mechanical_technician, electrical_technician]
+    required_parts: []
+    optional_parts: [electrical_connector]
+    duration_hours: 2.0
+    shutdown_required: true
+    inspection_required: true
+  motor_speed_loss:
+    strategy: inspect
+    action: Inspecter l'accouplement, le variateur et la charge mécanique
+    secondary_actions: [Vérifier l'alimentation, Contrôler la transmission]
+    skills: [electrical_technician, mechanical_technician]
+    required_parts: []
+    optional_parts: [drive_belt, electrical_connector]
+    duration_hours: 2.0
+    shutdown_required: true
+    inspection_required: true
+  motor_electrical_fault:
+    strategy: corrective_maintenance
+    action: Contrôler les connexions, l'isolation et les phases du moteur
+    secondary_actions: [Mesurer les courants de phase, Vérifier les protections]
+    skills: [electrical_technician, safety_officer]
+    required_parts: [electrical_connector]
+    optional_parts: [sensor]
+    duration_hours: 3.0
+    shutdown_required: true
+    inspection_required: true
+  bearing_wear:
+    strategy: preventive_maintenance
+    action: Inspecter et lubrifier le roulement puis planifier son remplacement
+    secondary_actions: [Contrôler l'alignement, Suivre la vibration]
+    skills: [mechanical_technician]
+    required_parts: [lubricant]
+    optional_parts: [industrial_bearing]
+    duration_hours: 1.5
+    shutdown_required: true
+    inspection_required: true
+  bearing_overheating:
+    strategy: preventive_maintenance
+    action: Vérifier la lubrification et l'alignement du roulement
+    secondary_actions: [Réduire temporairement la charge, Contrôler la température]
+    skills: [mechanical_technician]
+    required_parts: [lubricant]
+    optional_parts: [industrial_bearing]
+    duration_hours: 2.0
+    shutdown_required: true
+    inspection_required: true
+  bearing_severe_damage:
+    strategy: component_replacement
+    action: Remplacer immédiatement le roulement et contrôler l'arbre
+    secondary_actions: [Vérifier l'alignement, Inspecter les composants voisins]
+    skills: [mechanical_technician, maintenance_supervisor]
+    required_parts: [industrial_bearing, lubricant]
+    optional_parts: [sensor]
+    duration_hours: 3.0
+    shutdown_required: true
+    inspection_required: true
+  conveyor_overload:
+    strategy: preventive_maintenance
+    action: Réduire la charge et retirer les blocages du convoyeur
+    secondary_actions: [Inspecter la bande, Nettoyer la zone]
+    skills: [conveyor_specialist, mechanical_technician]
+    required_parts: []
+    optional_parts: [conveyor_roller]
+    duration_hours: 2.0
+    shutdown_required: true
+    inspection_required: true
+  conveyor_slippage:
+    strategy: component_replacement
+    action: Régler la tension et inspecter la bande et les rouleaux
+    secondary_actions: [Nettoyer les surfaces, Contrôler l'alignement]
+    skills: [conveyor_specialist, mechanical_technician]
+    required_parts: [drive_belt]
+    optional_parts: [conveyor_roller]
+    duration_hours: 2.5
+    shutdown_required: true
+    inspection_required: true
+  conveyor_speed_fault:
+    strategy: inspect
+    action: Contrôler le moteur, le variateur et le capteur de vitesse
+    secondary_actions: [Inspecter la transmission]
+    skills: [automation_technician, conveyor_specialist]
+    required_parts: [sensor]
+    optional_parts: [drive_belt]
+    duration_hours: 2.0
+    shutdown_required: true
+    inspection_required: true
+  conveyor_motor_overheating:
+    strategy: preventive_maintenance
+    action: Réduire la charge et inspecter la ventilation du convoyeur
+    secondary_actions: [Contrôler le moteur, Planifier un arrêt préventif]
+    skills: [conveyor_specialist, electrical_technician]
+    required_parts: [motor_fan]
+    optional_parts: []
+    duration_hours: 2.5
+    shutdown_required: true
+    inspection_required: true
+  pump_cavitation:
+    strategy: preventive_maintenance
+    action: Contrôler l'aspiration, le niveau de fluide et les filtres
+    secondary_actions: [Inspecter les conduites, Réduire temporairement la vitesse]
+    skills: [pump_specialist, mechanical_technician]
+    required_parts: [filter]
+    optional_parts: [mechanical_seal]
+    duration_hours: 2.5
+    shutdown_required: true
+    inspection_required: true
+  pump_blockage:
+    strategy: corrective_maintenance
+    action: Arrêter la pompe et retirer l'obstruction
+    secondary_actions: [Nettoyer les conduites, Contrôler le courant moteur]
+    skills: [pump_specialist, mechanical_technician]
+    required_parts: [filter]
+    optional_parts: [mechanical_seal]
+    duration_hours: 3.0
+    shutdown_required: true
+    inspection_required: true
+  pump_leakage:
+    strategy: component_replacement
+    action: Remplacer le joint mécanique et contrôler les raccords
+    secondary_actions: [Vérifier la pression, Nettoyer la zone]
+    skills: [pump_specialist, mechanical_technician]
+    required_parts: [mechanical_seal]
+    optional_parts: []
+    duration_hours: 2.5
+    shutdown_required: true
+    inspection_required: true
+  pump_overheating:
+    strategy: preventive_maintenance
+    action: Vérifier le refroidissement et la lubrification de la pompe
+    secondary_actions: [Réduire la charge, Inspecter le moteur]
+    skills: [pump_specialist, electrical_technician]
+    required_parts: [lubricant]
+    optional_parts: [motor_fan]
+    duration_hours: 2.5
+    shutdown_required: true
+    inspection_required: true
+  pump_bearing_fault:
+    strategy: component_replacement
+    action: Inspecter puis remplacer le roulement de pompe
+    secondary_actions: [Contrôler la lubrification, Vérifier l'alignement]
+    skills: [pump_specialist, mechanical_technician]
+    required_parts: [pump_bearing, lubricant]
+    optional_parts: []
+    duration_hours: 3.0
+    shutdown_required: true
+    inspection_required: true
+

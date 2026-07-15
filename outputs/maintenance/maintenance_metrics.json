@@ -1,0 +1,46 @@
+{
+  "recommendation_count": 12,
+  "by_strategy": {
+    "preventive_maintenance": 9,
+    "emergency_shutdown": 2,
+    "inspect": 1
+  },
+  "by_priority": {
+    "high": 6,
+    "medium": 4,
+    "critical": 2
+  },
+  "shutdown_count": 12,
+  "scheduled_orders": 8,
+  "blocked_orders": 4,
+  "deadline_respected_pct": 100.0,
+  "total_estimated_cost": 26881.5,
+  "total_duration_hours": 27.5,
+  "orders_without_parts": 1,
+  "low_confidence_recommendations": 0,
+  "critical_recommendations": 2,
+  "resource_conflicts_detected": 9,
+  "resource_conflicts_resolved": 9,
+  "blocking_reasons": {
+    "Aucune ressource ou aucun créneau avant la date limite": 3,
+    "Pièces indisponibles : sensor": 1
+  },
+  "resources_used": {
+    "pump_specialist_1,mechanical_technician_1": 2,
+    "mechanical_technician_2,maintenance_supervisor_1": 1,
+    "mechanical_technician_1": 1,
+    "electrical_technician_1,mechanical_technician_2": 1,
+    "mechanical_technician_2": 1,
+    "electrical_technician_1,mechanical_technician_1": 1,
+    "conveyor_specialist_1,mechanical_technician_2": 1
+  },
+  "required_parts": {
+    "lubricant": 3,
+    "filter": 2,
+    "industrial_bearing": 1,
+    "drive_belt": 1,
+    "sensor": 1,
+    "motor_fan": 1,
+    "mechanical_seal": 1
+  }
+}

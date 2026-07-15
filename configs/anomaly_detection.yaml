@@ -1,0 +1,41 @@
+paths:
+  data: data/synthetic/industrial_line_scenario.csv
+  models_directory: outputs/models
+  predictions: outputs/predictions/anomaly_predictions.csv
+  plots_directory: outputs/plots/anomaly_detection
+
+train_fraction: 0.70
+
+isolation_forest:
+  n_estimators: 200
+  contamination: 0.08
+  random_seed: 42
+
+features:
+  motor: [temperature, vibration, rpm, current, load]
+  bearing: [temperature, vibration, rpm, health_score]
+  conveyor: [temperature, vibration, load, conveyor_speed, slip_rate]
+  pump: [temperature, vibration, current, pressure, flow_rate]
+
+thresholds:
+  motor:
+    temperature: {max: 60.0}
+    vibration: {max: 4.0}
+    current: {max: 23.0}
+    load: {max: 80.0}
+  bearing:
+    temperature: {max: 52.0}
+    vibration: {max: 4.0}
+    health_score: {min: 75.0}
+  conveyor:
+    temperature: {max: 55.0}
+    vibration: {max: 3.5}
+    load: {max: 78.0}
+    slip_rate: {max: 7.0}
+  pump:
+    temperature: {max: 58.0}
+    vibration: {max: 3.5}
+    current: {max: 19.0}
+    pressure: {max: 6.8}
+    flow_rate: {min: 88.0}
+

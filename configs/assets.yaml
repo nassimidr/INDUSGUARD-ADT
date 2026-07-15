@@ -1,0 +1,18 @@
+assets:
+  MOTOR-001:
+    equipment_type: motor
+    line_id: line_01
+    aliases: [motor_01, motor_run_001]
+  BEARING-001:
+    equipment_type: bearing
+    line_id: line_01
+    parent_equipment_id: MOTOR-001
+    aliases: [bearing_01, bearing_run_001]
+  CONVEYOR-001:
+    equipment_type: conveyor
+    line_id: line_01
+    aliases: [conveyor_01, conveyor_run_001]
+  PUMP-001:
+    equipment_type: pump
+    line_id: line_01
+    aliases: [pump_01, pump_run_001]

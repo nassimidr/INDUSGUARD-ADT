@@ -5,3 +5,6 @@ __pycache__/
 .idea/
 .vscode/
 .DS_Store
+.env
+pyjabber.db
+*.pem

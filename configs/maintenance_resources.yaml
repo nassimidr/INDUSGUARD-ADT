@@ -1,0 +1,36 @@
+working_hours: {start: "08:00", end: "18:00"}
+production_loss_per_hour: 850.0
+delayed_risk_multiplier: 1.5
+
+technicians:
+  mechanical_technician: {available_count: 2, hourly_cost: 42.0, expertise: senior}
+  electrical_technician: {available_count: 1, hourly_cost: 55.0, expertise: senior}
+  automation_technician: {available_count: 1, hourly_cost: 52.0, expertise: intermediate}
+  pump_specialist: {available_count: 1, hourly_cost: 58.0, expertise: senior}
+  conveyor_specialist: {available_count: 1, hourly_cost: 50.0, expertise: intermediate}
+  maintenance_supervisor: {available_count: 1, hourly_cost: 65.0, expertise: senior}
+  safety_officer: {available_count: 1, hourly_cost: 48.0, expertise: senior}
+
+spare_parts:
+  industrial_bearing: {quantity: 2, unit_cost: 180.0}
+  lubricant: {quantity: 8, unit_cost: 25.0}
+  motor_fan: {quantity: 1, unit_cost: 140.0}
+  electrical_connector: {quantity: 3, unit_cost: 35.0}
+  drive_belt: {quantity: 1, unit_cost: 220.0}
+  conveyor_roller: {quantity: 2, unit_cost: 160.0}
+  mechanical_seal: {quantity: 1, unit_cost: 130.0}
+  pump_bearing: {quantity: 0, unit_cost: 210.0}
+  filter: {quantity: 2, unit_cost: 75.0}
+  sensor: {quantity: 0, unit_cost: 95.0}
+
+safety_instructions:
+  motor: [Couper et verrouiller l'alimentation, Vérifier l'absence de tension, Porter les EPI]
+  bearing: [Arrêter et consigner l'équipement, Attendre l'arrêt complet, Porter les EPI]
+  conveyor: [Arrêter et verrouiller le convoyeur, Interdire le redémarrage, Sécuriser la zone]
+  pump: [Arrêter la pompe, Réduire la pression, Isoler les conduites, Vérifier les risques liés au fluide]
+
+tools:
+  motor: [multimètre, caméra thermique, outils de consignation]
+  bearing: [analyseur de vibration, extracteur de roulement, clé dynamométrique]
+  conveyor: [tensiomètre de bande, outils d'alignement, kit de consignation]
+  pump: [manomètre, outils de démontage, kit de confinement]

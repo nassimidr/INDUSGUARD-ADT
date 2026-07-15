@@ -1,0 +1,50 @@
+simulation:
+  random_seed: 42
+  complete_runs_per_equipment: 20
+  incomplete_runs_per_equipment: 3
+  min_trajectory_length: 120
+  max_trajectory_length: 180
+  incomplete_min_fraction: 0.45
+  incomplete_max_fraction: 0.72
+  interval_hours: 0.5
+  start_timestamp: "2026-02-01T00:00:00"
+
+failure_types:
+  motor: [motor_overheating, motor_overload, motor_speed_loss, motor_electrical_fault]
+  bearing: [bearing_wear, bearing_overheating, bearing_severe_damage]
+  conveyor: [conveyor_overload, conveyor_slippage, conveyor_speed_fault, conveyor_motor_overheating]
+  pump: [pump_cavitation, pump_blockage, pump_leakage, pump_overheating, pump_bearing_fault]
+
+features:
+  motor: [temperature, vibration, rpm, current, load, health_score]
+  bearing: [temperature, vibration, rpm, health_score]
+  conveyor: [temperature, vibration, load, conveyor_speed, slip_rate, health_score]
+  pump: [temperature, vibration, current, pressure, flow_rate, health_score]
+
+feature_engineering:
+  rolling_windows: [5, 10, 20]
+  slope_window: 10
+
+model:
+  n_estimators: 120
+  max_depth: 14
+  min_samples_leaf: 2
+  random_seed: 42
+  test_size: 0.25
+
+uncertainty:
+  lower_percentile: 10
+  upper_percentile: 90
+
+risk_thresholds:
+  critical_max: 10
+  high_max: 25
+  medium_max: 50
+
+paths:
+  dataset: data/synthetic/industrial_rul_dataset.csv
+  models_directory: outputs/models/rul_prediction
+  predictions: outputs/rul_predictions/rul_predictions.csv
+  metrics: outputs/rul_predictions/rul_metrics.json
+  plots_directory: outputs/plots/rul_prediction
+

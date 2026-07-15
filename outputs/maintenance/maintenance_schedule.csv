@@ -1,0 +1,13 @@
+work_order_id,equipment_id,scheduled_start,scheduled_end,assigned_resource,priority,status,deadline_respected
+WO-20261102-011,PUMP-RUL-022,2026-11-02T08:00:00,2026-11-02T11:00:00,"pump_specialist_1,mechanical_technician_1",critical,urgent,True
+WO-20261102-001,BEARING-RUL-021,2026-11-02T08:00:00,2026-11-02T11:00:00,"mechanical_technician_2,maintenance_supervisor_1",critical,urgent,True
+WO-20261102-002,BEARING-RUL-022,2026-11-02T11:00:00,2026-11-02T12:30:00,mechanical_technician_1,high,scheduled,True
+WO-20261102-007,MOTOR-RUL-021,2026-11-02T11:00:00,2026-11-02T13:30:00,"electrical_technician_1,mechanical_technician_2",high,scheduled,True
+WO-20261102-010,PUMP-RUL-021,2026-11-02T12:30:00,2026-11-02T15:00:00,"pump_specialist_1,mechanical_technician_1",high,scheduled,True
+WO-20261102-003,BEARING-RUL-023,2026-11-02T13:30:00,2026-11-02T15:30:00,mechanical_technician_2,high,scheduled,True
+WO-20261102-009,MOTOR-RUL-023,2026-11-02T15:00:00,2026-11-02T17:00:00,"electrical_technician_1,mechanical_technician_1",high,scheduled,True
+WO-20261102-004,CONVEYOR-RUL-021,2026-11-02T15:30:00,2026-11-02T17:30:00,"conveyor_specialist_1,mechanical_technician_2",high,scheduled,True
+WO-20261102-005,CONVEYOR-RUL-022,,,,medium,blocked,False
+WO-20261102-006,CONVEYOR-RUL-023,,,,medium,blocked,False
+WO-20261102-008,MOTOR-RUL-022,,,,medium,blocked,False
+WO-20261102-012,PUMP-RUL-023,,,,medium,blocked,False

@@ -14,6 +14,8 @@ import yaml
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
+from .base_equipment import BaseEquipment
+
 
 class BearingSimulator:
     """Génère un scénario reproductible d'usure progressive d'un roulement."""
@@ -333,3 +335,26 @@ class BearingSimulator:
         for path in relative_plots:
             print(path.as_posix())
         print("\n" + "=" * 50)
+
+
+class LineBearingSimulator(BaseEquipment):
+    """Adaptation multi-équipement du roulement historique de la phase 1."""
+
+    def generate_measurement(
+        self, intensity: float, influences: dict[str, float] | None = None
+    ) -> dict[str, float]:
+        """Génère température, vibration, régime et santé du roulement."""
+        intensity = self.apply_intensity(intensity)
+        normal = self.config["normal"]
+        return {
+            "temperature": self.noisy(
+                normal["temperature"] + 28.0 * intensity, "temperature"
+            ),
+            "vibration": self.noisy(
+                normal["vibration"] + 7.0 * intensity, "vibration"
+            ),
+            "rpm": self.noisy(
+                normal["rpm"] * (1.0 - 0.12 * intensity), "rpm", 1.0
+            ),
+            "health_score": self.health_score,
+        }

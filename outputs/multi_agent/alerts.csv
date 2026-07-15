@@ -1,0 +1,3 @@
+timestamp,alert_id,trace_id,equipment_id,level,title,message,acknowledged
+2026-07-15T14:00:23.179235Z,efb1a168-2ed8-4b46-9d17-5e3084836c8e,f6824844-c377-4056-9a59-0e1b1c112246,PUMP-001,high,Ordre de travail confirmé,WO-MAS-DFFDD12D81 planifié pour PUMP-001.,False
+2026-07-15T14:00:33.660263Z,6d6fd1dc-c979-41b3-af6b-633ca8854e2e,29c1abc1-1fe8-477c-b01a-f0d678d09bd5,BEARING-001,high,Ordre de travail confirmé,WO-MAS-3A79B137EC planifié pour BEARING-001.,False

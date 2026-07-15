@@ -1,0 +1,2437 @@
+{
+  "rule_based": {
+    "global": {
+      "accuracy": 0.92,
+      "precision_macro": 0.6197916666666666,
+      "recall_macro": 0.8048007246376812,
+      "f1_macro": 0.6791880278014222,
+      "f1_weighted": 0.9051792489977322,
+      "unknown_count": 4,
+      "labels": [
+        "bearing_overheating",
+        "bearing_severe_damage",
+        "bearing_wear",
+        "cascade_failure",
+        "conveyor_motor_overheating",
+        "conveyor_overload",
+        "conveyor_slippage",
+        "conveyor_speed_fault",
+        "motor_overheating",
+        "motor_overload",
+        "motor_speed_loss",
+        "normal",
+        "pump_blockage",
+        "pump_cavitation",
+        "pump_overheating",
+        "unknown_fault"
+      ],
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          5,
+          7,
+          0,
+          0,
+          1,
+          3,
+          1,
+          0,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          409,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "by_class": {
+        "bearing_overheating": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 3.0
+        },
+        "bearing_severe_damage": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 5.0
+        },
+        "bearing_wear": {
+          "precision": 0.4166666666666667,
+          "recall": 1.0,
+          "f1-score": 0.5882352941176471,
+          "support": 5.0
+        },
+        "cascade_failure": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 34.0
+        },
+        "conveyor_motor_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 5.0
+        },
+        "conveyor_overload": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 1.0
+        },
+        "conveyor_slippage": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1-score": 0.8,
+          "support": 6.0
+        },
+        "conveyor_speed_fault": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "motor_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "motor_overload": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 5.0
+        },
+        "motor_speed_loss": {
+          "precision": 0.3333333333333333,
+          "recall": 0.8888888888888888,
+          "f1-score": 0.48484848484848486,
+          "support": 9.0
+        },
+        "normal": {
+          "precision": 1.0,
+          "recall": 0.9879227053140096,
+          "f1-score": 0.9939246658566221,
+          "support": 414.0
+        },
+        "pump_blockage": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "pump_cavitation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "pump_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2.0
+        },
+        "unknown_fault": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 0.92,
+        "macro avg": {
+          "precision": 0.6197916666666666,
+          "recall": 0.8048007246376812,
+          "f1-score": 0.6791880278014222,
+          "support": 500.0
+        },
+        "weighted avg": {
+          "precision": 0.9011666666666667,
+          "recall": 0.92,
+          "f1-score": 0.9051792489977322,
+          "support": 500.0
+        }
+      }
+    },
+    "by_equipment": {
+      "bearing": {
+        "accuracy": 0.88,
+        "precision_macro": 0.4833333333333334,
+        "recall_macro": 0.8,
+        "f1_macro": 0.584313725490196,
+        "f1_weighted": 0.8421960784313726,
+        "unknown_count": 0,
+        "labels": [
+          "bearing_overheating",
+          "bearing_severe_damage",
+          "bearing_wear",
+          "cascade_failure",
+          "normal"
+        ],
+        "confusion_matrix": [
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0,
+            0
+          ],
+          [
+            3,
+            5,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            97
+          ]
+        ],
+        "by_class": {
+          "bearing_overheating": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1-score": 0.6666666666666666,
+            "support": 3.0
+          },
+          "bearing_severe_damage": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1-score": 0.6666666666666666,
+            "support": 5.0
+          },
+          "bearing_wear": {
+            "precision": 0.4166666666666667,
+            "recall": 1.0,
+            "f1-score": 0.5882352941176471,
+            "support": 5.0
+          },
+          "cascade_failure": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 15.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 97.0
+          },
+          "accuracy": 0.88,
+          "macro avg": {
+            "precision": 0.4833333333333334,
+            "recall": 0.8,
+            "f1-score": 0.584313725490196,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.8246666666666667,
+            "recall": 0.88,
+            "f1-score": 0.8421960784313726,
+            "support": 125.0
+          }
+        }
+      },
+      "conveyor": {
+        "accuracy": 0.936,
+        "precision_macro": 0.4523809523809524,
+        "recall_macro": 0.5700808625336927,
+        "f1_macro": 0.49456104716768223,
+        "f1_weighted": 0.9277143759873618,
+        "unknown_count": 3,
+        "labels": [
+          "cascade_failure",
+          "conveyor_motor_overheating",
+          "conveyor_overload",
+          "conveyor_slippage",
+          "conveyor_speed_fault",
+          "normal",
+          "unknown_fault"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            1,
+            3,
+            1,
+            0,
+            2
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            105,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "by_class": {
+          "cascade_failure": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 7.0
+          },
+          "conveyor_motor_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5.0
+          },
+          "conveyor_overload": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1-score": 0.6666666666666666,
+            "support": 1.0
+          },
+          "conveyor_slippage": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1-score": 0.8,
+            "support": 6.0
+          },
+          "conveyor_speed_fault": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 0.9905660377358491,
+            "f1-score": 0.995260663507109,
+            "support": 106.0
+          },
+          "unknown_fault": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.936,
+          "macro avg": {
+            "precision": 0.4523809523809524,
+            "recall": 0.5700808625336927,
+            "f1-score": 0.49456104716768223,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.924,
+            "recall": 0.936,
+            "f1-score": 0.9277143759873618,
+            "support": 125.0
+          }
+        }
+      },
+      "motor": {
+        "accuracy": 0.864,
+        "precision_macro": 0.5555555555555556,
+        "recall_macro": 0.6413454270597128,
+        "f1_macro": 0.5773358585858586,
+        "f1_weighted": 0.8505757575757575,
+        "unknown_count": 1,
+        "labels": [
+          "cascade_failure",
+          "motor_overheating",
+          "motor_overload",
+          "motor_speed_loss",
+          "normal",
+          "unknown_fault"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            8,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            4,
+            94,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "by_class": {
+          "cascade_failure": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 12.0
+          },
+          "motor_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 1.0
+          },
+          "motor_overload": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5.0
+          },
+          "motor_speed_loss": {
+            "precision": 0.3333333333333333,
+            "recall": 0.8888888888888888,
+            "f1-score": 0.48484848484848486,
+            "support": 9.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 0.9591836734693877,
+            "f1-score": 0.9791666666666666,
+            "support": 98.0
+          },
+          "unknown_fault": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.864,
+          "macro avg": {
+            "precision": 0.5555555555555556,
+            "recall": 0.6413454270597128,
+            "f1-score": 0.5773358585858586,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.856,
+            "recall": 0.864,
+            "f1-score": 0.8505757575757575,
+            "support": 125.0
+          }
+        }
+      },
+      "pump": {
+        "accuracy": 1.0,
+        "precision_macro": 1.0,
+        "recall_macro": 1.0,
+        "f1_macro": 1.0,
+        "f1_weighted": 1.0,
+        "unknown_count": 0,
+        "labels": [
+          "normal",
+          "pump_blockage",
+          "pump_cavitation",
+          "pump_overheating"
+        ],
+        "confusion_matrix": [
+          [
+            113,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2
+          ]
+        ],
+        "by_class": {
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 113.0
+          },
+          "pump_blockage": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 4.0
+          },
+          "pump_cavitation": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 6.0
+          },
+          "pump_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2.0
+          },
+          "accuracy": 1.0,
+          "macro avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          }
+        }
+      }
+    }
+  },
+  "machine_learning": {
+    "global": {
+      "accuracy": 0.956,
+      "precision_macro": 0.7816526610644258,
+      "recall_macro": 0.7911764705882353,
+      "f1_macro": 0.7861183707932934,
+      "f1_weighted": 0.9548708133971292,
+      "unknown_count": 0,
+      "labels": [
+        "bearing_overheating",
+        "bearing_severe_damage",
+        "bearing_wear",
+        "cascade_failure",
+        "conveyor_motor_overheating",
+        "conveyor_overload",
+        "conveyor_slippage",
+        "motor_overheating",
+        "motor_overload",
+        "motor_speed_loss",
+        "normal",
+        "pump_blockage",
+        "pump_cavitation",
+        "pump_overheating"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          4,
+          5,
+          23,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          414,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "by_class": {
+        "bearing_overheating": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 3.0
+        },
+        "bearing_severe_damage": {
+          "precision": 0.2,
+          "recall": 0.2,
+          "f1-score": 0.2,
+          "support": 5.0
+        },
+        "bearing_wear": {
+          "precision": 0.16666666666666666,
+          "recall": 0.2,
+          "f1-score": 0.18181818181818182,
+          "support": 5.0
+        },
+        "cascade_failure": {
+          "precision": 0.6764705882352942,
+          "recall": 0.6764705882352942,
+          "f1-score": 0.6764705882352942,
+          "support": 34.0
+        },
+        "conveyor_motor_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 5.0
+        },
+        "conveyor_overload": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "conveyor_slippage": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "motor_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "motor_overload": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 5.0
+        },
+        "motor_speed_loss": {
+          "precision": 0.9,
+          "recall": 1.0,
+          "f1-score": 0.9473684210526315,
+          "support": 9.0
+        },
+        "normal": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 414.0
+        },
+        "pump_blockage": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "pump_cavitation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "pump_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2.0
+        },
+        "accuracy": 0.956,
+        "macro avg": {
+          "precision": 0.7816526610644258,
+          "recall": 0.7911764705882353,
+          "f1-score": 0.7861183707932934,
+          "support": 500.0
+        },
+        "weighted avg": {
+          "precision": 0.9538666666666666,
+          "recall": 0.956,
+          "f1-score": 0.9548708133971292,
+          "support": 500.0
+        }
+      }
+    },
+    "by_equipment": {
+      "bearing": {
+        "accuracy": 0.832,
+        "precision_macro": 0.3358333333333333,
+        "recall_macro": 0.3466666666666667,
+        "f1_macro": 0.34087976539589443,
+        "f1_weighted": 0.8299824046920822,
+        "unknown_count": 0,
+        "labels": [
+          "bearing_overheating",
+          "bearing_severe_damage",
+          "bearing_wear",
+          "cascade_failure",
+          "normal"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            4,
+            0
+          ],
+          [
+            1,
+            4,
+            5,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            97
+          ]
+        ],
+        "by_class": {
+          "bearing_overheating": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 3.0
+          },
+          "bearing_severe_damage": {
+            "precision": 0.2,
+            "recall": 0.2,
+            "f1-score": 0.2,
+            "support": 5.0
+          },
+          "bearing_wear": {
+            "precision": 0.16666666666666666,
+            "recall": 0.2,
+            "f1-score": 0.18181818181818182,
+            "support": 5.0
+          },
+          "cascade_failure": {
+            "precision": 0.3125,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3225806451612903,
+            "support": 15.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 97.0
+          },
+          "accuracy": 0.832,
+          "macro avg": {
+            "precision": 0.3358333333333333,
+            "recall": 0.3466666666666667,
+            "f1-score": 0.34087976539589443,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.8281666666666666,
+            "recall": 0.832,
+            "f1-score": 0.8299824046920822,
+            "support": 125.0
+          }
+        }
+      },
+      "conveyor": {
+        "accuracy": 1.0,
+        "precision_macro": 1.0,
+        "recall_macro": 1.0,
+        "f1_macro": 1.0,
+        "f1_weighted": 1.0,
+        "unknown_count": 0,
+        "labels": [
+          "cascade_failure",
+          "conveyor_motor_overheating",
+          "conveyor_overload",
+          "conveyor_slippage",
+          "normal"
+        ],
+        "confusion_matrix": [
+          [
+            7,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            106
+          ]
+        ],
+        "by_class": {
+          "cascade_failure": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 7.0
+          },
+          "conveyor_motor_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5.0
+          },
+          "conveyor_overload": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 1.0
+          },
+          "conveyor_slippage": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 6.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 106.0
+          },
+          "accuracy": 1.0,
+          "macro avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          }
+        }
+      },
+      "motor": {
+        "accuracy": 0.992,
+        "precision_macro": 0.9800000000000001,
+        "recall_macro": 0.9833333333333332,
+        "f1_macro": 0.9807780320366131,
+        "f1_weighted": 0.9920366132723112,
+        "unknown_count": 0,
+        "labels": [
+          "cascade_failure",
+          "motor_overheating",
+          "motor_overload",
+          "motor_speed_loss",
+          "normal"
+        ],
+        "confusion_matrix": [
+          [
+            11,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            98
+          ]
+        ],
+        "by_class": {
+          "cascade_failure": {
+            "precision": 1.0,
+            "recall": 0.9166666666666666,
+            "f1-score": 0.9565217391304348,
+            "support": 12.0
+          },
+          "motor_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 1.0
+          },
+          "motor_overload": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5.0
+          },
+          "motor_speed_loss": {
+            "precision": 0.9,
+            "recall": 1.0,
+            "f1-score": 0.9473684210526315,
+            "support": 9.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 98.0
+          },
+          "accuracy": 0.992,
+          "macro avg": {
+            "precision": 0.9800000000000001,
+            "recall": 0.9833333333333332,
+            "f1-score": 0.9807780320366131,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.9927999999999999,
+            "recall": 0.992,
+            "f1-score": 0.9920366132723112,
+            "support": 125.0
+          }
+        }
+      },
+      "pump": {
+        "accuracy": 1.0,
+        "precision_macro": 1.0,
+        "recall_macro": 1.0,
+        "f1_macro": 1.0,
+        "f1_weighted": 1.0,
+        "unknown_count": 0,
+        "labels": [
+          "normal",
+          "pump_blockage",
+          "pump_cavitation",
+          "pump_overheating"
+        ],
+        "confusion_matrix": [
+          [
+            113,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2
+          ]
+        ],
+        "by_class": {
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 113.0
+          },
+          "pump_blockage": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 4.0
+          },
+          "pump_cavitation": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 6.0
+          },
+          "pump_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2.0
+          },
+          "accuracy": 1.0,
+          "macro avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          }
+        }
+      }
+    }
+  },
+  "hybrid": {
+    "global": {
+      "accuracy": 0.942,
+      "precision_macro": 0.7275219298245614,
+      "recall_macro": 0.8301275220233021,
+      "f1_macro": 0.7418774217408161,
+      "f1_weighted": 0.9402848767033599,
+      "unknown_count": 1,
+      "labels": [
+        "bearing_overheating",
+        "bearing_severe_damage",
+        "bearing_wear",
+        "cascade_failure",
+        "conveyor_motor_overheating",
+        "conveyor_overload",
+        "conveyor_slippage",
+        "conveyor_speed_fault",
+        "motor_overheating",
+        "motor_overload",
+        "motor_speed_loss",
+        "normal",
+        "pump_blockage",
+        "pump_cavitation",
+        "pump_overheating",
+        "unknown_fault"
+      ],
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          5,
+          7,
+          10,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          409,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "by_class": {
+        "bearing_overheating": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 3.0
+        },
+        "bearing_severe_damage": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1-score": 0.6666666666666666,
+          "support": 5.0
+        },
+        "bearing_wear": {
+          "precision": 0.4166666666666667,
+          "recall": 1.0,
+          "f1-score": 0.5882352941176471,
+          "support": 5.0
+        },
+        "cascade_failure": {
+          "precision": 1.0,
+          "recall": 0.29411764705882354,
+          "f1-score": 0.45454545454545453,
+          "support": 34.0
+        },
+        "conveyor_motor_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 5.0
+        },
+        "conveyor_overload": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "conveyor_slippage": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1-score": 0.8571428571428571,
+          "support": 6.0
+        },
+        "conveyor_speed_fault": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "motor_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 1.0
+        },
+        "motor_overload": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 5.0
+        },
+        "motor_speed_loss": {
+          "precision": 0.47368421052631576,
+          "recall": 1.0,
+          "f1-score": 0.6428571428571429,
+          "support": 9.0
+        },
+        "normal": {
+          "precision": 1.0,
+          "recall": 0.9879227053140096,
+          "f1-score": 0.9939246658566221,
+          "support": 414.0
+        },
+        "pump_blockage": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 4.0
+        },
+        "pump_cavitation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "pump_overheating": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 2.0
+        },
+        "unknown_fault": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 0.0
+        },
+        "accuracy": 0.942,
+        "macro avg": {
+          "precision": 0.7275219298245614,
+          "recall": 0.8301275220233021,
+          "f1-score": 0.7418774217408161,
+          "support": 500.0
+        },
+        "weighted avg": {
+          "precision": 0.9736929824561403,
+          "recall": 0.942,
+          "f1-score": 0.9402848767033599,
+          "support": 500.0
+        }
+      }
+    },
+    "by_equipment": {
+      "bearing": {
+        "accuracy": 0.88,
+        "precision_macro": 0.4833333333333334,
+        "recall_macro": 0.8,
+        "f1_macro": 0.584313725490196,
+        "f1_weighted": 0.8421960784313726,
+        "unknown_count": 0,
+        "labels": [
+          "bearing_overheating",
+          "bearing_severe_damage",
+          "bearing_wear",
+          "cascade_failure",
+          "normal"
+        ],
+        "confusion_matrix": [
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0,
+            0
+          ],
+          [
+            3,
+            5,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            97
+          ]
+        ],
+        "by_class": {
+          "bearing_overheating": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1-score": 0.6666666666666666,
+            "support": 3.0
+          },
+          "bearing_severe_damage": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1-score": 0.6666666666666666,
+            "support": 5.0
+          },
+          "bearing_wear": {
+            "precision": 0.4166666666666667,
+            "recall": 1.0,
+            "f1-score": 0.5882352941176471,
+            "support": 5.0
+          },
+          "cascade_failure": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 15.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 97.0
+          },
+          "accuracy": 0.88,
+          "macro avg": {
+            "precision": 0.4833333333333334,
+            "recall": 0.8,
+            "f1-score": 0.584313725490196,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.8246666666666667,
+            "recall": 0.88,
+            "f1-score": 0.8421960784313726,
+            "support": 125.0
+          }
+        }
+      },
+      "conveyor": {
+        "accuracy": 0.968,
+        "precision_macro": 0.6785714285714286,
+        "recall_macro": 0.6517135155949172,
+        "f1_macro": 0.6542394639889563,
+        "f1_weighted": 0.9738511725241583,
+        "unknown_count": 1,
+        "labels": [
+          "cascade_failure",
+          "conveyor_motor_overheating",
+          "conveyor_overload",
+          "conveyor_slippage",
+          "conveyor_speed_fault",
+          "normal",
+          "unknown_fault"
+        ],
+        "confusion_matrix": [
+          [
+            4,
+            0,
+            0,
+            2,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            105,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "by_class": {
+          "cascade_failure": {
+            "precision": 1.0,
+            "recall": 0.5714285714285714,
+            "f1-score": 0.7272727272727273,
+            "support": 7.0
+          },
+          "conveyor_motor_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5.0
+          },
+          "conveyor_overload": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 1.0
+          },
+          "conveyor_slippage": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1-score": 0.8571428571428571,
+            "support": 6.0
+          },
+          "conveyor_speed_fault": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 0.9905660377358491,
+            "f1-score": 0.995260663507109,
+            "support": 106.0
+          },
+          "unknown_fault": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.968,
+          "macro avg": {
+            "precision": 0.6785714285714286,
+            "recall": 0.6517135155949172,
+            "f1-score": 0.6542394639889563,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.988,
+            "recall": 0.968,
+            "f1-score": 0.9738511725241583,
+            "support": 125.0
+          }
+        }
+      },
+      "motor": {
+        "accuracy": 0.92,
+        "precision_macro": 0.8947368421052632,
+        "recall_macro": 0.8918367346938776,
+        "f1_macro": 0.8577380952380953,
+        "f1_weighted": 0.925952380952381,
+        "unknown_count": 0,
+        "labels": [
+          "cascade_failure",
+          "motor_overheating",
+          "motor_overload",
+          "motor_speed_loss",
+          "normal"
+        ],
+        "confusion_matrix": [
+          [
+            6,
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            5,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            4,
+            94
+          ]
+        ],
+        "by_class": {
+          "cascade_failure": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1-score": 0.6666666666666666,
+            "support": 12.0
+          },
+          "motor_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 1.0
+          },
+          "motor_overload": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5.0
+          },
+          "motor_speed_loss": {
+            "precision": 0.47368421052631576,
+            "recall": 1.0,
+            "f1-score": 0.6428571428571429,
+            "support": 9.0
+          },
+          "normal": {
+            "precision": 1.0,
+            "recall": 0.9591836734693877,
+            "f1-score": 0.9791666666666666,
+            "support": 98.0
+          },
+          "accuracy": 0.92,
+          "macro avg": {
+            "precision": 0.8947368421052632,
+            "recall": 0.8918367346938776,
+            "f1-score": 0.8577380952380953,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 0.9621052631578948,
+            "recall": 0.92,
+            "f1-score": 0.925952380952381,
+            "support": 125.0
+          }
+        }
+      },
+      "pump": {
+        "accuracy": 1.0,
+        "precision_macro": 1.0,
+        "recall_macro": 1.0,
+        "f1_macro": 1.0,
+        "f1_weighted": 1.0,
+        "unknown_count": 0,
+        "labels": [
+          "normal",
+          "pump_blockage",
+          "pump_cavitation",
+          "pump_overheating"
+        ],
+        "confusion_matrix": [
+          [
+            113,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2
+          ]
+        ],
+        "by_class": {
+          "normal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 113.0
+          },
+          "pump_blockage": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 4.0
+          },
+          "pump_cavitation": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 6.0
+          },
+          "pump_overheating": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2.0
+          },
+          "accuracy": 1.0,
+          "macro avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          },
+          "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 125.0
+          }
+        }
+      }
+    }
+  },
+  "rare_classes": {
+    "pump_overheating": 9,
+    "conveyor_overload": 5,
+    "motor_overheating": 5
+  },
+  "evaluation_rows": 500
+}
