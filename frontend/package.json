@@ -1,0 +1,43 @@
+{
+  "name": "indusguard-dashboard",
+  "private": true,
+  "version": "7.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@mui/icons-material": "9.2.0",
+    "@mui/material": "9.2.0",
+    "@tanstack/react-query": "5.101.2",
+    "plotly.js": "3.7.0",
+    "plotly.js-basic-dist-min": "3.7.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-plotly.js": "4.0.0",
+    "react-router-dom": "7.18.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.2",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/plotly.js": "3.0.9",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@types/react-plotly.js": "2.6.4",
+    "@vitejs/plugin-react": "6.0.3",
+    "eslint": "9.39.2",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.5.2",
+    "jsdom": "29.0.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.57.0",
+    "vite": "8.1.4",
+    "vitest": "4.1.10"
+  }
+}

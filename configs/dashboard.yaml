@@ -1,0 +1,29 @@
+app:
+  name: INDUSGUARD-ADT
+  environment: development
+  language: fr
+  timezone: Africa/Casablanca
+api:
+  host: 127.0.0.1
+  port: 8000
+  cors_origins: [http://localhost:5173, http://127.0.0.1:5173]
+database:
+  url: sqlite:///data/dashboard/indusguard_dashboard.db
+  echo: false
+  wal_mode: true
+websocket:
+  path: /ws/dashboard
+  heartbeat_seconds: 15
+  maximum_connections: 20
+  maximum_message_bytes: 262144
+  batch_interval_ms: 250
+dashboard:
+  refresh_interval_seconds: 5
+  maximum_chart_points: 1000
+  recent_alert_limit: 10
+  default_page_size: 25
+retention:
+  measurements_days: 30
+  events_days: 30
+runtime:
+  allowed_scenarios: [normal, bearing_wear, pump_cavitation, emergency, resource_unavailable, agent_unavailable, duplicate_message]

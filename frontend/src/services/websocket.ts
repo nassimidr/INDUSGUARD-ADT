@@ -1,0 +1,2 @@
+type Listener=(event:MessageEvent)=>void;
+export class DashboardSocket{private socket?:WebSocket;private retries=0;connect(listener:Listener){const scheme=location.protocol==='https:'?'wss':'ws';this.socket=new WebSocket(`${scheme}://${location.host}/ws/dashboard`);this.socket.onopen=()=>{this.retries=0;this.socket?.send(JSON.stringify({event_types:[]}))};this.socket.onmessage=listener;this.socket.onclose=()=>setTimeout(()=>this.connect(listener),Math.min(1000*2**this.retries++,30000))}close(){this.socket?.close()}}

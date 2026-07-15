@@ -1,5 +1,17 @@
 # INDUSGUARD-ADT
 
+## Tableau de bord Phase 7
+
+La phase 7 ajoute une API FastAPI versionnée, 15 tables SQLite/SQLAlchemy, des migrations Alembic, un flux WebSocket et une application React/TypeScript de 12 vues. Le système reste local et ne pilote aucun équipement réel.
+
+```bash
+pip install -r requirements-dashboard.txt
+python import_dashboard_history.py
+python run_dashboard.py
+```
+
+Dans un second terminal, lancer `cd frontend`, `npm install`, puis `npm run dev` et ouvrir `http://127.0.0.1:5173`. OpenAPI est disponible sur `http://127.0.0.1:8000/docs`. Pour la persistance SQLite pendant une exécution SPADE, définir `INDUSGUARD_DASHBOARD_ENABLED=1`. Voir [la documentation Phase 7](docs/phase_7_dashboard.md).
+
 INDUSGUARD-ADT est un jumeau numérique Python destiné à expérimenter la surveillance d'une ligne industrielle et la détection automatique d'anomalies. Les données sont synthétiques : elles servent au développement et ne doivent pas piloter une installation réelle.
 
 ## Fonctionnalités

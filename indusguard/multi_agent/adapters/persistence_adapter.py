@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -17,10 +18,16 @@ HEALTH_COLUMNS = ["timestamp","agent_id","status","last_heartbeat","messages_pro
 class PersistenceAdapter:
     def __init__(self, directory: str | Path) -> None:
         self.directory=Path(directory); self.directory.mkdir(parents=True,exist_ok=True)
+        self.dashboard=None
+        if os.environ.get("INDUSGUARD_DASHBOARD_ENABLED", "0") == "1":
+            from .dashboard_persistence_adapter import DashboardPersistenceAdapter
+            self.dashboard=DashboardPersistenceAdapter(os.environ.get("INDUSGUARD_DASHBOARD_CONFIG", "configs/dashboard.yaml"))
 
     def append_jsonl(self, filename: str, record: dict[str, Any]) -> None:
         with (self.directory/filename).open("a",encoding="utf-8") as stream:
             stream.write(json.dumps(record,ensure_ascii=False,default=str)+"\n")
+        if self.dashboard and filename == "messages.jsonl": self.dashboard.submit("message",record)
+        if self.dashboard and filename == "messages.jsonl": self.dashboard.submit("domain",record)
 
     def append_csv(self, filename: str, columns: list[str], record: dict[str, Any]) -> None:
         path=self.directory/filename; exists=path.exists() and path.stat().st_size>0
@@ -29,10 +36,21 @@ class PersistenceAdapter:
             if not exists: writer.writeheader()
             writer.writerow({key: record.get(key,"") for key in columns})
 
-    def event(self, record: dict[str, Any]) -> None: self.append_csv("events.csv",EVENT_COLUMNS,record)
-    def decision(self, record: dict[str, Any]) -> None: self.append_csv("decisions.csv",DECISION_COLUMNS,record)
-    def alert(self, record: dict[str, Any]) -> None: self.append_csv("alerts.csv",ALERT_COLUMNS,record)
-    def health(self, record: dict[str, Any]) -> None: self.append_csv("agent_health.csv",HEALTH_COLUMNS,record)
+    def event(self, record: dict[str, Any]) -> None:
+        self.append_csv("events.csv",EVENT_COLUMNS,record)
+        if self.dashboard: self.dashboard.submit("event",record)
+    def decision(self, record: dict[str, Any]) -> None:
+        self.append_csv("decisions.csv",DECISION_COLUMNS,record)
+        if self.dashboard: self.dashboard.submit("decision",record)
+    def alert(self, record: dict[str, Any]) -> None:
+        self.append_csv("alerts.csv",ALERT_COLUMNS,record)
+        if self.dashboard: self.dashboard.submit("alert",record)
+    def health(self, record: dict[str, Any]) -> None:
+        self.append_csv("agent_health.csv",HEALTH_COLUMNS,record)
+        if self.dashboard: self.dashboard.submit("health",record)
+
+    def close(self) -> None:
+        if self.dashboard: self.dashboard.close()
 
     def reset(self) -> None:
         for name in ("messages.jsonl","events.csv","decisions.csv","alerts.csv","agent_health.csv","dead_letter_messages.jsonl"):

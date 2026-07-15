@@ -8,3 +8,11 @@ __pycache__/
 .env
 pyjabber.db
 *.pem
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+*.tsbuildinfo
+data/dashboard/*.db-shm
+data/dashboard/*.db-wal
+data/dashboard/test_*.db
+data/dashboard/*.db

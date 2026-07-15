@@ -77,4 +77,4 @@ class MultiAgentRuntime:
             await self.start(); await self.wait()
         finally:
             await self.stop()
-        return self.finalize()
+        result=self.finalize(); self.persistence.close(); return result
