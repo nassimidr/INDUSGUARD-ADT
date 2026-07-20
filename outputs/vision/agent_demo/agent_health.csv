@@ -1,0 +1,9 @@
+timestamp,agent_id,status,last_heartbeat,messages_processed,errors_count,queue_size,average_processing_time_ms
+2026-07-20T10:45:06.698382Z,alert@localhost,ready,2026-07-20T10:45:06.698382Z,0,0,0,0.0
+2026-07-20T10:45:06.441822Z,historian@localhost,ready,2026-07-20T10:45:06.441822Z,0,0,0,0.0
+2026-07-20T10:45:06.942172Z,supervisor@localhost,ready,2026-07-20T10:45:06.942172Z,0,0,0,0.0
+2026-07-20T10:45:12.264809Z,supervisor@localhost,ready,2026-07-20T10:45:12.264809Z,3,0,0,1.036
+2026-07-20T10:45:12.262144Z,alert@localhost,ready,2026-07-20T10:45:12.262144Z,0,0,0,0.0
+2026-07-20T10:45:12.259140Z,historian@localhost,ready,2026-07-20T10:45:12.259140Z,0,0,0,0.0
+2026-07-20T10:45:07.153183Z,vision@localhost,ready,2026-07-20T10:45:07.153183Z,0,0,0,0.0
+2026-07-20T10:45:12.266940Z,vision@localhost,ready,2026-07-20T10:45:12.266940Z,1,0,0,5096.512

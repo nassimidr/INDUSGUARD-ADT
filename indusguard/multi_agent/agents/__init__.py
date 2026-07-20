@@ -7,5 +7,6 @@ from .resource_agent import ResourceAgent
 from .rul_prediction_agent import RULPredictionAgent
 from .sensor_agent import SensorAgent
 from .supervisor_agent import SupervisorAgent
+from .vision_agent import VisionAgent
 
-__all__ = ["SensorAgent","AnomalyDetectionAgent","FaultDiagnosisAgent","RULPredictionAgent","MaintenanceAgent","ResourceAgent","SupervisorAgent","AlertAgent","HistorianAgent"]
+__all__ = ["SensorAgent","AnomalyDetectionAgent","FaultDiagnosisAgent","RULPredictionAgent","MaintenanceAgent","ResourceAgent","SupervisorAgent","AlertAgent","HistorianAgent","VisionAgent"]

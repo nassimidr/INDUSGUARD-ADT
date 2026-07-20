@@ -1,0 +1,526 @@
+{
+  "dataset_name": "indusguard-vision-synthetic",
+  "seed": 42,
+  "generated_at": "2026-07-20T10:35:19.179852+00:00",
+  "image_width": 640,
+  "image_height": 480,
+  "records": [
+    {
+      "image_id": "conveyor_00000",
+      "split": "train",
+      "image_path": "images/train/conveyor_00000.png",
+      "label_path": "labels/train/conveyor_00000.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00001",
+      "split": "test",
+      "image_path": "images/test/conveyor_00001.png",
+      "label_path": "labels/test/conveyor_00001.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00002",
+      "split": "val",
+      "image_path": "images/val/conveyor_00002.png",
+      "label_path": "labels/val/conveyor_00002.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00003",
+      "split": "train",
+      "image_path": "images/train/conveyor_00003.png",
+      "label_path": "labels/train/conveyor_00003.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00004",
+      "split": "train",
+      "image_path": "images/train/conveyor_00004.png",
+      "label_path": "labels/train/conveyor_00004.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00005",
+      "split": "val",
+      "image_path": "images/val/conveyor_00005.png",
+      "label_path": "labels/val/conveyor_00005.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00006",
+      "split": "val",
+      "image_path": "images/val/conveyor_00006.png",
+      "label_path": "labels/val/conveyor_00006.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00007",
+      "split": "test",
+      "image_path": "images/test/conveyor_00007.png",
+      "label_path": "labels/test/conveyor_00007.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00008",
+      "split": "test",
+      "image_path": "images/test/conveyor_00008.png",
+      "label_path": "labels/test/conveyor_00008.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00009",
+      "split": "train",
+      "image_path": "images/train/conveyor_00009.png",
+      "label_path": "labels/train/conveyor_00009.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00010",
+      "split": "train",
+      "image_path": "images/train/conveyor_00010.png",
+      "label_path": "labels/train/conveyor_00010.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00011",
+      "split": "train",
+      "image_path": "images/train/conveyor_00011.png",
+      "label_path": "labels/train/conveyor_00011.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00012",
+      "split": "train",
+      "image_path": "images/train/conveyor_00012.png",
+      "label_path": "labels/train/conveyor_00012.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00013",
+      "split": "train",
+      "image_path": "images/train/conveyor_00013.png",
+      "label_path": "labels/train/conveyor_00013.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00014",
+      "split": "test",
+      "image_path": "images/test/conveyor_00014.png",
+      "label_path": "labels/test/conveyor_00014.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00015",
+      "split": "test",
+      "image_path": "images/test/conveyor_00015.png",
+      "label_path": "labels/test/conveyor_00015.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00016",
+      "split": "train",
+      "image_path": "images/train/conveyor_00016.png",
+      "label_path": "labels/train/conveyor_00016.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00017",
+      "split": "test",
+      "image_path": "images/test/conveyor_00017.png",
+      "label_path": "labels/test/conveyor_00017.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00018",
+      "split": "train",
+      "image_path": "images/train/conveyor_00018.png",
+      "label_path": "labels/train/conveyor_00018.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00019",
+      "split": "train",
+      "image_path": "images/train/conveyor_00019.png",
+      "label_path": "labels/train/conveyor_00019.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00020",
+      "split": "train",
+      "image_path": "images/train/conveyor_00020.png",
+      "label_path": "labels/train/conveyor_00020.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00021",
+      "split": "train",
+      "image_path": "images/train/conveyor_00021.png",
+      "label_path": "labels/train/conveyor_00021.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00022",
+      "split": "train",
+      "image_path": "images/train/conveyor_00022.png",
+      "label_path": "labels/train/conveyor_00022.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00023",
+      "split": "train",
+      "image_path": "images/train/conveyor_00023.png",
+      "label_path": "labels/train/conveyor_00023.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00024",
+      "split": "train",
+      "image_path": "images/train/conveyor_00024.png",
+      "label_path": "labels/train/conveyor_00024.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00025",
+      "split": "train",
+      "image_path": "images/train/conveyor_00025.png",
+      "label_path": "labels/train/conveyor_00025.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00026",
+      "split": "train",
+      "image_path": "images/train/conveyor_00026.png",
+      "label_path": "labels/train/conveyor_00026.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00027",
+      "split": "val",
+      "image_path": "images/val/conveyor_00027.png",
+      "label_path": "labels/val/conveyor_00027.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00028",
+      "split": "train",
+      "image_path": "images/train/conveyor_00028.png",
+      "label_path": "labels/train/conveyor_00028.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00029",
+      "split": "train",
+      "image_path": "images/train/conveyor_00029.png",
+      "label_path": "labels/train/conveyor_00029.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00030",
+      "split": "train",
+      "image_path": "images/train/conveyor_00030.png",
+      "label_path": "labels/train/conveyor_00030.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00031",
+      "split": "train",
+      "image_path": "images/train/conveyor_00031.png",
+      "label_path": "labels/train/conveyor_00031.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00032",
+      "split": "train",
+      "image_path": "images/train/conveyor_00032.png",
+      "label_path": "labels/train/conveyor_00032.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00033",
+      "split": "train",
+      "image_path": "images/train/conveyor_00033.png",
+      "label_path": "labels/train/conveyor_00033.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00034",
+      "split": "val",
+      "image_path": "images/val/conveyor_00034.png",
+      "label_path": "labels/val/conveyor_00034.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00035",
+      "split": "train",
+      "image_path": "images/train/conveyor_00035.png",
+      "label_path": "labels/train/conveyor_00035.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00036",
+      "split": "train",
+      "image_path": "images/train/conveyor_00036.png",
+      "label_path": "labels/train/conveyor_00036.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00037",
+      "split": "val",
+      "image_path": "images/val/conveyor_00037.png",
+      "label_path": "labels/val/conveyor_00037.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00038",
+      "split": "train",
+      "image_path": "images/train/conveyor_00038.png",
+      "label_path": "labels/train/conveyor_00038.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00039",
+      "split": "train",
+      "image_path": "images/train/conveyor_00039.png",
+      "label_path": "labels/train/conveyor_00039.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00040",
+      "split": "test",
+      "image_path": "images/test/conveyor_00040.png",
+      "label_path": "labels/test/conveyor_00040.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00041",
+      "split": "train",
+      "image_path": "images/train/conveyor_00041.png",
+      "label_path": "labels/train/conveyor_00041.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00042",
+      "split": "train",
+      "image_path": "images/train/conveyor_00042.png",
+      "label_path": "labels/train/conveyor_00042.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00043",
+      "split": "val",
+      "image_path": "images/val/conveyor_00043.png",
+      "label_path": "labels/val/conveyor_00043.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00044",
+      "split": "train",
+      "image_path": "images/train/conveyor_00044.png",
+      "label_path": "labels/train/conveyor_00044.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00045",
+      "split": "train",
+      "image_path": "images/train/conveyor_00045.png",
+      "label_path": "labels/train/conveyor_00045.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00046",
+      "split": "train",
+      "image_path": "images/train/conveyor_00046.png",
+      "label_path": "labels/train/conveyor_00046.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00047",
+      "split": "test",
+      "image_path": "images/test/conveyor_00047.png",
+      "label_path": "labels/test/conveyor_00047.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00048",
+      "split": "train",
+      "image_path": "images/train/conveyor_00048.png",
+      "label_path": "labels/train/conveyor_00048.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00049",
+      "split": "train",
+      "image_path": "images/train/conveyor_00049.png",
+      "label_path": "labels/train/conveyor_00049.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00050",
+      "split": "train",
+      "image_path": "images/train/conveyor_00050.png",
+      "label_path": "labels/train/conveyor_00050.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00051",
+      "split": "val",
+      "image_path": "images/val/conveyor_00051.png",
+      "label_path": "labels/val/conveyor_00051.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00052",
+      "split": "train",
+      "image_path": "images/train/conveyor_00052.png",
+      "label_path": "labels/train/conveyor_00052.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00053",
+      "split": "train",
+      "image_path": "images/train/conveyor_00053.png",
+      "label_path": "labels/train/conveyor_00053.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00054",
+      "split": "train",
+      "image_path": "images/train/conveyor_00054.png",
+      "label_path": "labels/train/conveyor_00054.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00055",
+      "split": "train",
+      "image_path": "images/train/conveyor_00055.png",
+      "label_path": "labels/train/conveyor_00055.txt",
+      "defects": []
+    },
+    {
+      "image_id": "conveyor_00056",
+      "split": "test",
+      "image_path": "images/test/conveyor_00056.png",
+      "label_path": "labels/test/conveyor_00056.txt",
+      "defects": [
+        "belt_misalignment"
+      ]
+    },
+    {
+      "image_id": "conveyor_00057",
+      "split": "val",
+      "image_path": "images/val/conveyor_00057.png",
+      "label_path": "labels/val/conveyor_00057.txt",
+      "defects": [
+        "obstacle"
+      ]
+    },
+    {
+      "image_id": "conveyor_00058",
+      "split": "train",
+      "image_path": "images/train/conveyor_00058.png",
+      "label_path": "labels/train/conveyor_00058.txt",
+      "defects": [
+        "material_accumulation"
+      ]
+    },
+    {
+      "image_id": "conveyor_00059",
+      "split": "train",
+      "image_path": "images/train/conveyor_00059.png",
+      "label_path": "labels/train/conveyor_00059.txt",
+      "defects": []
+    }
+  ],
+  "parameters": {
+    "total_images": 60,
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15000000000000005,
+    "generator": "Pillow procedural conveyor renderer"
+  }
+}

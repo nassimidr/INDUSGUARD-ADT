@@ -5,4 +5,8 @@ PyYAML
 scikit-learn
 joblib
 pytest
+pytest-cov
 spade>=4.1.4,<4.2
+Pillow>=10,<13
+opencv-python>=4.8,<5
+ultralytics>=8.3,<9

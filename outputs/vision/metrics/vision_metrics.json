@@ -1,0 +1,24 @@
+{
+  "evaluated_at": "2026-07-20T11:08:44.439982+00:00",
+  "weights": "outputs/vision/models/best.pt",
+  "split": "test",
+  "images": 9,
+  "annotations": 6,
+  "precision": 0.7825378978017663,
+  "recall": 0.9273468419081062,
+  "map50": 0.995,
+  "map50_95": 0.948888888888889,
+  "per_class": {
+    "belt_misalignment": {
+      "map50_95": 0.9066666666666666
+    },
+    "obstacle": {
+      "map50_95": 0.945
+    },
+    "material_accumulation": {
+      "map50_95": 0.9949999999999999
+    }
+  },
+  "average_inference_ms": 37.71925555257541,
+  "wall_seconds": 10.733746199985035
+}

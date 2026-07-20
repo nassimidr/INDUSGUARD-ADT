@@ -1,6 +1,7 @@
 """Non-blocking bridge from Phase 6 persistence calls to the Phase 7 database."""
 from __future__ import annotations
 
+import logging
 import queue
 import threading
 from typing import Any
@@ -12,6 +13,8 @@ from indusguard.dashboard.config import load_dashboard_config
 from indusguard.dashboard.database import build_engine, initialize_database, session_factory
 from indusguard.dashboard.utils import json_text
 
+LOGGER = logging.getLogger(__name__)
+
 
 class DashboardPersistenceAdapter:
     def __init__(self, config_path: str = "configs/dashboard.yaml", queue_size: int = 10_000) -> None:
@@ -21,7 +24,11 @@ class DashboardPersistenceAdapter:
 
     def submit(self, kind: str, record: dict[str, Any]) -> None:
         try: self.queue.put_nowait((kind, dict(record)))
-        except queue.Full: pass  # CSV remains the source of truth and can be re-imported.
+        except queue.Full:
+            LOGGER.warning(
+                "Dashboard persistence queue is full; the SQL record was not queued (kind=%s).",
+                kind,
+            )
 
     def close(self, timeout: float = 5) -> None:
         self.queue.put(None); self.worker.join(timeout); self.engine.dispose()
@@ -37,7 +44,10 @@ class DashboardPersistenceAdapter:
                     if model:
                         session.execute(insert(model).values(**values).on_conflict_do_nothing(index_elements=unique)); session.commit()
             except Exception:
-                # Dashboard persistence must never interrupt the industrial pipeline.
+                LOGGER.exception(
+                    "Dashboard persistence failed; CSV remains the source of truth (kind=%s).",
+                    kind,
+                )
                 continue
 
     def _map(self, kind: str, row: dict[str, Any]):
@@ -60,6 +70,20 @@ class DashboardPersistenceAdapter:
                 return models.RULPrediction, {**common, "predicted_rul_steps": payload.get("predicted_rul_steps", 0), "predicted_rul_hours": payload.get("predicted_rul_hours", 0),
                     "rul_lower_bound": payload.get("rul_lower_bound"), "rul_upper_bound": payload.get("rul_upper_bound"), "prediction_confidence": payload.get("prediction_confidence"),
                     "risk_level": payload.get("risk_level", "unknown"), "responsible_features": json_text(payload.get("responsible_features")), "explanation": payload.get("rul_explanation")}, ["timestamp", "equipment_id"]
+            if message_type == "vision.detection":
+                box = payload.get("bounding_box") or {}
+                provenance = payload.get("provenance") or {}
+                return models.VisionDetectionModel, {
+                    "detection_id": payload.get("detection_id"), "equipment_id": equipment_id,
+                    "camera_id": payload.get("camera_id", "unknown"), "frame_id": payload.get("frame_id", "unknown"),
+                    "defect_type": payload.get("defect_type", "unknown_defect"), "confidence": payload.get("confidence", 0),
+                    "x_min": box.get("x_min", 0), "y_min": box.get("y_min", 0), "x_max": box.get("x_max", 1), "y_max": box.get("y_max", 1),
+                    "image_width": payload.get("image_width", 1), "image_height": payload.get("image_height", 1),
+                    "original_image_path": payload.get("original_image_path", ""), "annotated_image_path": payload.get("annotated_image_path"),
+                    "timestamp": str(payload.get("timestamp") or timestamp), "trace_id": trace_id,
+                    "source": payload.get("source", "vision_agent"), "model_name": payload.get("model_name", "unknown"),
+                    "model_version": payload.get("model_version", "unknown"), "provenance": json_text(provenance) or "{}",
+                }, ["detection_id"]
             if message_type == "maintenance.recommendation":
                 return models.MaintenanceRecommendation, {**common, "maintenance_strategy": payload.get("maintenance_strategy", "monitor"),
                     "recommended_action": payload.get("recommended_action", "Surveiller"), "priority": payload.get("priority", row.get("priority", "medium")),

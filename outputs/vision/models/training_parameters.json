@@ -1,0 +1,28 @@
+{
+  "trained_at": "2026-07-20T10:41:34.671479+00:00",
+  "seed": 42,
+  "epochs_requested": 20,
+  "epochs_completed": 18,
+  "batch_size": 8,
+  "image_size": 640,
+  "base_weights": "yolov8n.pt",
+  "device": "0",
+  "dataset": "data/vision/dataset.yaml",
+  "dataset_summary": {
+    "dataset_yaml": "data/vision/dataset.yaml",
+    "splits": {
+      "train": 42,
+      "val": 9,
+      "test": 9
+    },
+    "class_counts": {
+      "belt_misalignment": 15,
+      "obstacle": 15,
+      "material_accumulation": 15
+    },
+    "annotations": 45,
+    "unique_images": 60
+  },
+  "custom_weights": "outputs/vision/models/best.pt",
+  "training_run": "outputs/vision/training/phase8a"
+}

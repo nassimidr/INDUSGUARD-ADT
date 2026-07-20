@@ -1,4 +1,4 @@
-"""Cycle de vie des neuf agents SPADE sur XMPP embedded ou external."""
+"""Cycle de vie des dix agents SPADE sur XMPP embedded ou external."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from typing import Any
 
 from .adapters.persistence_adapter import PersistenceAdapter
 from .agent_registry import AgentRegistry
-from .agents import AlertAgent,AnomalyDetectionAgent,FaultDiagnosisAgent,HistorianAgent,MaintenanceAgent,ResourceAgent,RULPredictionAgent,SensorAgent,SupervisorAgent
+from .agents import AlertAgent,AnomalyDetectionAgent,FaultDiagnosisAgent,HistorianAgent,MaintenanceAgent,ResourceAgent,RULPredictionAgent,SensorAgent,SupervisorAgent,VisionAgent
 from .config import MultiAgentConfig,load_multi_agent_config
 from .metrics import MetricsCollector
 from .schemas import AgentMessage
@@ -17,7 +17,7 @@ from .visualizer import create_multi_agent_plots
 
 
 class MultiAgentRuntime:
-    STARTUP_ORDER=("historian","alert","resource","supervisor","maintenance","rul","diagnosis","anomaly","sensor")
+    STARTUP_ORDER=("historian","alert","resource","supervisor","vision","maintenance","rul","diagnosis","anomaly","sensor")
     def __init__(self,config:MultiAgentConfig|None=None,*,scenario:str="normal",speed:float|None=None,max_measurements:int|None=None,equipment_id:str|None=None,reset_outputs:bool=True)->None:
         self.config=config or load_multi_agent_config(); self.scenario=scenario; self.metrics=MetricsCollector()
         output=self.config.root/self.config.values["outputs"]["directory"]; self.persistence=PersistenceAdapter(output)
@@ -26,6 +26,7 @@ class MultiAgentRuntime:
         self.agents={
             "historian":HistorianAgent(**common),"alert":AlertAgent(**common),"resource":ResourceAgent(**common,scenario=scenario),
             "supervisor":SupervisorAgent(**common),"maintenance":MaintenanceAgent(**common),"rul":RULPredictionAgent(**common),
+            "vision":VisionAgent(**common),
             "diagnosis":FaultDiagnosisAgent(**common),"anomaly":AnomalyDetectionAgent(**common),
             "sensor":SensorAgent(**common,scenario=scenario,speed=speed,max_measurements=max_measurements,equipment_id=equipment_id),
         }

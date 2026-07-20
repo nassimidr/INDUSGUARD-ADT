@@ -21,7 +21,9 @@ class MessageFactory:
     ) -> tuple[AgentMessage, Message]:
         envelope = AgentMessage(
             message_type=message_type, sender_agent=sender, target_agent=target,
-            payload=payload, equipment_id=equipment_id, equipment_type=equipment_type,
+            payload=payload,
+            equipment_id=equipment_id or (parent.equipment_id if parent else None),
+            equipment_type=equipment_type or (parent.equipment_type if parent else None),
             priority=priority, context=context or {}, schema_version=self.schema_version,
             trace_id=parent.trace_id if parent else AgentMessage.__dataclass_fields__["trace_id"].default_factory(),
             correlation_id=parent.correlation_id if parent else AgentMessage.__dataclass_fields__["correlation_id"].default_factory(),

@@ -17,6 +17,8 @@ from .models import SystemEvent
 from .routers import router
 from .schemas import Subscription
 from .websocket import DashboardConnectionManager
+from indusguard.vision import VisionModelManager, load_vision_config
+from indusguard.vision.detector import VisionDetector
 
 
 def create_app(config: DashboardConfig | None = None) -> FastAPI:
@@ -29,7 +31,8 @@ def create_app(config: DashboardConfig | None = None) -> FastAPI:
         last_id = 0
         mapping = {"sensor.measurement": "measurement.created", "anomaly.result": "anomaly.detected",
                    "diagnosis.result": "diagnosis.completed", "rul.result": "rul.updated",
-                   "maintenance.recommendation": "maintenance.recommended", "alert.created": "alert.created",
+                   "maintenance.recommendation": "maintenance.recommended", "vision.detection": "vision.detection.created",
+                   "vision.analysis.failed": "vision.analysis.failed", "alert.created": "alert.created",
                    "heartbeat": "agent.health_updated", "pipeline.completed": "pipeline.trace_updated"}
         while True:
             with Session() as session:
@@ -54,6 +57,10 @@ def create_app(config: DashboardConfig | None = None) -> FastAPI:
     app.state.config, app.state.engine, app.state.Session = settings, engine, Session
     app.state.ws = ws
     app.state.process_manager = ProcessManager(settings.root, Session)
+    vision_config = load_vision_config(settings.root / "configs/vision.yaml")
+    app.state.vision_config = vision_config
+    app.state.vision_manager = VisionModelManager(vision_config)
+    app.state.vision_detector = VisionDetector(vision_config, app.state.vision_manager)
     app.add_middleware(CORSMiddleware, allow_origins=settings.values["api"]["cors_origins"], allow_credentials=False,
                        allow_methods=["GET", "POST", "PATCH", "OPTIONS"], allow_headers=["Content-Type", "Authorization"])
     app.include_router(router)

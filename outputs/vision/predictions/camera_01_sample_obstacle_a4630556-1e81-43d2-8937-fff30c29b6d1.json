@@ -1,0 +1,12 @@
+{
+  "trace_id": "a4630556-1e81-43d2-8937-fff30c29b6d1",
+  "frame_id": "camera_01_sample_obstacle",
+  "detections": [],
+  "inference_time_ms": 4487.972000031732,
+  "model_name": "yolov8n",
+  "model_version": "phase8a-v1",
+  "custom_model_loaded": true,
+  "technical_fallback": false,
+  "annotated_image_path": "outputs/vision/annotated/camera_01_sample_obstacle.jpg",
+  "prediction_json_path": "outputs/vision/predictions/camera_01_sample_obstacle_a4630556-1e81-43d2-8937-fff30c29b6d1.json"
+}

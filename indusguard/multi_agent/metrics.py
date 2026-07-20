@@ -45,7 +45,7 @@ class MetricsCollector:
         required=("total_messages","messages_successful","errors","messages_duplicated","messages_rejected","timeouts","retries","dead_letters",
             "anomalies_detected","diagnostics_produced","rul_predictions_produced","recommendations_produced","resource_proposals",
             "resource_proposals_accepted","resource_proposals_rejected","resource_proposals_refused","work_orders_created","interventions_scheduled",
-            "interventions_blocked","critical_alerts","heartbeats_received","heartbeats_missing","agents_unavailable","traces_completed","traces_failed")
+            "interventions_blocked","critical_alerts","vision_detections_produced","heartbeats_received","heartbeats_missing","agents_unavailable","traces_completed","traces_failed")
         return {
             **{name:self.counters[name] for name in required}, **dict(self.counters), "messages_by_type": dict(self.by_type),
             "messages_by_agent": dict(self.by_agent),
