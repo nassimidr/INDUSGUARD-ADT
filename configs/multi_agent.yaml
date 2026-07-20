@@ -18,6 +18,7 @@ agents:
   supervisor: {jid: supervisor@localhost, enabled: true}
   alert: {jid: alert@localhost, enabled: true}
   historian: {jid: historian@localhost, enabled: true}
+  vision: {jid: vision@localhost, enabled: true}
 simulation:
   input_path: data/synthetic/industrial_line_scenario.csv
   mode: accelerated

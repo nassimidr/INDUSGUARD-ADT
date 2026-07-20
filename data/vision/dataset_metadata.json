@@ -1,0 +1,26 @@
+{
+  "dataset_name": "indusguard-vision-synthetic",
+  "seed": 42,
+  "generated_at": "2026-07-20T10:35:19.180852Z",
+  "image_width": 640,
+  "image_height": 480,
+  "total_images": 60,
+  "splits": {
+    "train": 42,
+    "test": 9,
+    "val": 9
+  },
+  "class_counts": {
+    "belt_misalignment": 15,
+    "obstacle": 15,
+    "material_accumulation": 15
+  },
+  "normal_images": 15,
+  "generation_parameters": {
+    "total_images": 60,
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15000000000000005,
+    "generator": "Pillow procedural conveyor renderer"
+  }
+}

@@ -1,0 +1,7 @@
+train: images/train
+val: images/val
+test: images/test
+names:
+- belt_misalignment
+- obstacle
+- material_accumulation

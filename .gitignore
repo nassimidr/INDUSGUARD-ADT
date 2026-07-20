@@ -2,6 +2,13 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+.coverage
+htmlcov/
+*.cache
+/runs/
+/mlruns/
+/yolov8n.pt
+/yolo26n.pt
 .idea/
 .vscode/
 .DS_Store

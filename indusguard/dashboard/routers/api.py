@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi.responses import FileResponse
 from sqlalchemy import desc, func, or_, select
 from sqlalchemy.orm import Session
 
@@ -12,6 +13,10 @@ from .. import models
 from ..dependencies import get_session
 from ..schemas import SystemRunStart, WorkOrderStatusUpdate
 from ..utils import as_dict, envelope
+from indusguard.vision.exceptions import InvalidImageError, VisionModelUnavailableError
+from indusguard.vision.repository import SQLAlchemyVisionRepository
+from indusguard.vision.schemas import VisionInferenceRequest
+from indusguard.vision.service import VisionService
 
 router = APIRouter(prefix="/api/v1")
 
@@ -86,6 +91,13 @@ def asset_trace(equipment_id: str, session: Session = Depends(get_session)):
     return envelope([as_dict(x) for x in session.scalars(select(models.PipelineTrace).where(models.PipelineTrace.equipment_id == equipment_id).order_by(desc(models.PipelineTrace.started_at)).limit(50))])
 
 
+@router.get("/assets/{equipment_id}/vision-detections")
+def asset_vision_detections(equipment_id: str, limit: int = Query(100, ge=1, le=1000), session: Session = Depends(get_session)):
+    items = session.scalars(select(models.VisionDetectionModel).where(models.VisionDetectionModel.equipment_id == equipment_id)
+                            .order_by(desc(models.VisionDetectionModel.timestamp)).limit(limit)).all()
+    return envelope([as_dict(item) for item in items])
+
+
 @router.get("/measurements")
 def measurements(page: int = 1, page_size: int = Query(25, le=200), equipment_id: str | None = None, session: Session = Depends(get_session)):
     conditions = [models.SensorMeasurement.equipment_id == equipment_id] if equipment_id else []
@@ -144,6 +156,80 @@ def rul_equipment(equipment_id: str, limit: int = Query(200, le=1000), session: 
 def rul_summary(session: Session = Depends(get_session)):
     rows = session.execute(select(models.RULPrediction.risk_level, func.count()).group_by(models.RULPrediction.risk_level)).all()
     return envelope({"total": sum(count for _, count in rows), "by_risk": dict(rows)})
+
+
+@router.get("/vision/health")
+def vision_health(request: Request):
+    if not request.app.state.vision_manager.loaded:
+        try: request.app.state.vision_manager.load()
+        except VisionModelUnavailableError: pass
+    return envelope(request.app.state.vision_manager.status().model_dump(mode="json"))
+
+
+def _controlled_vision_path(request: Request, image_path: str):
+    config = request.app.state.vision_config
+    candidate = config.path(image_path)
+    allowed = [config.path(value) for value in config.values.get("api", {}).get("allowed_input_directories", [])]
+    if not any(candidate == root or root in candidate.parents for root in allowed):
+        raise HTTPException(422, "Image path is outside the configured demo directories.")
+    if not candidate.is_file():
+        raise HTTPException(422, "Image file does not exist.")
+    maximum = int(config.values.get("api", {}).get("maximum_image_bytes", 10 * 1024 * 1024))
+    if candidate.stat().st_size > maximum:
+        raise HTTPException(413, "Image exceeds the configured size limit.")
+    return candidate
+
+
+@router.post("/vision/analyze")
+async def vision_analyze(payload: VisionInferenceRequest, request: Request, session: Session = Depends(get_session)):
+    controlled = _controlled_vision_path(request, payload.image_path)
+    safe_payload = payload.model_copy(update={"image_path": str(controlled)})
+    service = VisionService(request.app.state.vision_config, request.app.state.vision_detector, SQLAlchemyVisionRepository(session))
+    try:
+        result = service.analyze(safe_payload, source="vision_api")
+    except InvalidImageError as error:
+        raise HTTPException(422, str(error)) from error
+    except VisionModelUnavailableError as error:
+        await request.app.state.ws.broadcast("vision.analysis.failed", {"trace_id": payload.trace_id, "error": str(error)})
+        raise HTTPException(503, str(error)) from error
+    for detection in result.detections:
+        await request.app.state.ws.broadcast("vision.detection.created", detection.model_dump(mode="json"))
+    return envelope(result.model_dump(mode="json"))
+
+
+@router.get("/vision/detections")
+def vision_detections(page: int = Query(1, ge=1), page_size: int = Query(25, ge=1, le=200),
+                      equipment_id: str | None = None, defect_type: str | None = None,
+                      camera_id: str | None = None, start: str | None = None, end: str | None = None,
+                      session: Session = Depends(get_session)):
+    conditions = []
+    if equipment_id: conditions.append(models.VisionDetectionModel.equipment_id == equipment_id)
+    if defect_type: conditions.append(models.VisionDetectionModel.defect_type == defect_type)
+    if camera_id: conditions.append(models.VisionDetectionModel.camera_id == camera_id)
+    if start: conditions.append(models.VisionDetectionModel.timestamp >= start)
+    if end: conditions.append(models.VisionDetectionModel.timestamp <= end)
+    return _page(session, models.VisionDetectionModel, page, page_size, *conditions, order=desc(models.VisionDetectionModel.timestamp))
+
+
+@router.get("/vision/detections/{detection_id}")
+def vision_detection(detection_id: str, session: Session = Depends(get_session)):
+    item = _one(session, models.VisionDetectionModel, models.VisionDetectionModel.detection_id == detection_id, "Detection vision")
+    return envelope(as_dict(item))
+
+
+@router.get("/vision/detections/{detection_id}/image/{variant}")
+def vision_detection_image(detection_id: str, variant: str, request: Request, session: Session = Depends(get_session)):
+    if variant not in {"original", "annotated"}:
+        raise HTTPException(404, "Image variant not found")
+    item = _one(session, models.VisionDetectionModel, models.VisionDetectionModel.detection_id == detection_id, "Detection vision")
+    stored = item.original_image_path if variant == "original" else item.annotated_image_path
+    if not stored:
+        raise HTTPException(404, "Image not found")
+    candidate = request.app.state.vision_config.path(stored)
+    root = request.app.state.vision_config.root
+    if root not in candidate.parents or not candidate.is_file():
+        raise HTTPException(404, "Image not found")
+    return FileResponse(candidate)
 
 
 @router.get("/maintenance/recommendations")

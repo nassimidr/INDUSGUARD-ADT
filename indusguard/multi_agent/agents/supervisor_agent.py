@@ -17,7 +17,7 @@ class SupervisorAgent(BaseIndusGuardAgent):
         self.case_states:dict[str,str]={}; self.expected=0; self.completed=0; self.stream_finished=False; self.pipeline_done=asyncio.Event()
         self.work_orders:dict[str,str]={}; self.active_contracts:set[str]=set(); self.blocked_cases:set[str]=set()
     async def setup(self)->None:
-        await self.common_setup(["sensor.stream_started","sensor.stream_completed","anomaly.result","diagnosis.result","rul.result","maintenance.recommendation","resource.proposal","resource.refusal","resource.confirmation","resource.failure","heartbeat","processing.failure"])
+        await self.common_setup(["sensor.stream_started","sensor.stream_completed","anomaly.result","diagnosis.result","rul.result","maintenance.recommendation","resource.proposal","resource.refusal","resource.confirmation","resource.failure","vision.detection","vision.analysis.completed","vision.analysis.failed","heartbeat","processing.failure"])
     async def process(self,envelope,message)->None:
         kind=envelope.message_type
         if kind=="sensor.stream_started": self.expected=int(envelope.payload["measurement_count"])
@@ -26,6 +26,12 @@ class SupervisorAgent(BaseIndusGuardAgent):
         elif kind=="anomaly.result":
             if envelope.payload["is_anomaly"]: self.case_states[envelope.trace_id]="anomaly_detected"
             else: await self._finish(envelope,"normal",{"is_anomaly":False})
+        elif kind=="vision.detection":
+            self.case_states[envelope.trace_id]="vision_detected"
+        elif kind=="vision.analysis.completed":
+            self.case_states[envelope.trace_id]="vision_clear"
+        elif kind=="vision.analysis.failed":
+            self.case_states[envelope.trace_id]="vision_failed"
         elif kind in {"diagnosis.result","rul.result","maintenance.recommendation"}:
             self.case_states[envelope.trace_id]="emergency" if envelope.priority=="critical" else kind.split(".")[0]+"_pending"
             if envelope.priority=="critical": await self._alert(envelope,"critical","Urgence industrielle simulée","Arrêt d'urgence simulé; aucun équipement physique n'est commandé.")

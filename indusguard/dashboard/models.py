@@ -1,6 +1,6 @@
 from __future__ import annotations
 from datetime import datetime,timezone
-from sqlalchemy import Boolean,Float,Integer,String,Text,Index
+from sqlalchemy import Boolean,CheckConstraint,Float,Integer,String,Text,Index
 from sqlalchemy.orm import Mapped,mapped_column
 from .database import Base
 
@@ -21,6 +21,21 @@ class FaultDiagnosis(IdMixin,Base):
 class RULPrediction(IdMixin,Base):
     __tablename__="rul_predictions";timestamp:Mapped[str]=mapped_column(String(40),index=True);trace_id:Mapped[str|None]=mapped_column(String(80),index=True);equipment_id:Mapped[str]=mapped_column(String(80),index=True);predicted_rul_steps:Mapped[float]=mapped_column(Float);predicted_rul_hours:Mapped[float]=mapped_column(Float);rul_lower_bound:Mapped[float|None]=mapped_column(Float);rul_upper_bound:Mapped[float|None]=mapped_column(Float);prediction_confidence:Mapped[float|None]=mapped_column(Float);risk_level:Mapped[str]=mapped_column(String(30),index=True);responsible_features:Mapped[str|None]=mapped_column(Text);explanation:Mapped[str|None]=mapped_column(Text)
     __table_args__=(Index("uq_rul_natural","timestamp","equipment_id",unique=True),)
+class VisionDetectionModel(IdMixin,Base):
+    __tablename__="vision_detections"
+    detection_id:Mapped[str]=mapped_column(String(80),unique=True,index=True)
+    equipment_id:Mapped[str]=mapped_column(String(80),index=True)
+    camera_id:Mapped[str]=mapped_column(String(80),index=True)
+    frame_id:Mapped[str]=mapped_column(String(120),index=True)
+    defect_type:Mapped[str]=mapped_column(String(80),index=True)
+    confidence:Mapped[float]=mapped_column(Float)
+    x_min:Mapped[float]=mapped_column(Float);y_min:Mapped[float]=mapped_column(Float);x_max:Mapped[float]=mapped_column(Float);y_max:Mapped[float]=mapped_column(Float)
+    image_width:Mapped[int]=mapped_column(Integer);image_height:Mapped[int]=mapped_column(Integer)
+    original_image_path:Mapped[str]=mapped_column(Text);annotated_image_path:Mapped[str|None]=mapped_column(Text)
+    timestamp:Mapped[str]=mapped_column(String(40),index=True);trace_id:Mapped[str]=mapped_column(String(80),index=True)
+    source:Mapped[str]=mapped_column(String(40));model_name:Mapped[str]=mapped_column(String(80));model_version:Mapped[str]=mapped_column(String(80))
+    provenance:Mapped[str]=mapped_column(Text);created_at:Mapped[str]=mapped_column(String(40),default=now)
+    __table_args__=(CheckConstraint("confidence >= 0 AND confidence <= 1",name="ck_vision_confidence"),)
 class MaintenanceRecommendation(IdMixin,Base):
     __tablename__="maintenance_recommendations";timestamp:Mapped[str]=mapped_column(String(40),index=True);trace_id:Mapped[str|None]=mapped_column(String(80),index=True);equipment_id:Mapped[str]=mapped_column(String(80),index=True);maintenance_strategy:Mapped[str]=mapped_column(String(60));recommended_action:Mapped[str]=mapped_column(Text);priority:Mapped[str]=mapped_column(String(30),index=True);priority_score:Mapped[float|None]=mapped_column(Float);recommended_start:Mapped[str|None]=mapped_column(String(40));recommended_deadline:Mapped[str|None]=mapped_column(String(40));estimated_duration_hours:Mapped[float|None]=mapped_column(Float);required_skills:Mapped[str|None]=mapped_column(Text);required_parts:Mapped[str|None]=mapped_column(Text);shutdown_required:Mapped[bool]=mapped_column(Boolean);estimated_total_cost:Mapped[float|None]=mapped_column(Float);confidence:Mapped[float|None]=mapped_column(Float);explanation:Mapped[str|None]=mapped_column(Text)
 class WorkOrder(IdMixin,Base):
@@ -42,4 +57,4 @@ class PipelineTrace(IdMixin,Base):
 class SystemRun(IdMixin,Base):
     __tablename__="system_runs";run_id:Mapped[str]=mapped_column(String(80),unique=True,index=True);scenario:Mapped[str]=mapped_column(String(60),index=True);mode:Mapped[str]=mapped_column(String(30));status:Mapped[str]=mapped_column(String(30),index=True);started_at:Mapped[str]=mapped_column(String(40),index=True);completed_at:Mapped[str|None]=mapped_column(String(40));measurements_processed:Mapped[int]=mapped_column(Integer,default=0);messages_processed:Mapped[int]=mapped_column(Integer,default=0);process_id:Mapped[int|None]=mapped_column(Integer);error_message:Mapped[str|None]=mapped_column(Text)
 
-ALL_MODELS=(Asset,SensorMeasurement,AnomalyResult,FaultDiagnosis,RULPrediction,MaintenanceRecommendation,WorkOrder,MaintenanceSchedule,AgentHealth,AgentMessage,SystemEvent,SystemDecision,Alert,PipelineTrace,SystemRun)
+ALL_MODELS=(Asset,SensorMeasurement,AnomalyResult,FaultDiagnosis,RULPrediction,VisionDetectionModel,MaintenanceRecommendation,WorkOrder,MaintenanceSchedule,AgentHealth,AgentMessage,SystemEvent,SystemDecision,Alert,PipelineTrace,SystemRun)

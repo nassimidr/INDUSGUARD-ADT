@@ -1,0 +1,62 @@
+enabled: true
+mode: demo
+
+model:
+  framework: ultralytics
+  architecture: yolov8n
+  weights_path: outputs/vision/models/best.pt
+  fallback_weights: yolov8n.pt
+  version: phase8a-v1
+  device: auto
+  confidence_threshold: 0.50
+  iou_threshold: 0.45
+  image_size: 640
+
+classes:
+  - belt_misalignment
+  - obstacle
+  - material_accumulation
+
+camera:
+  camera_id: camera_01
+  default_equipment_id: CONVEYOR-001
+  source_type: directory
+  source_path: data/vision/demo
+
+outputs:
+  save_annotated: true
+  save_json: true
+  annotated_directory: outputs/vision/annotated
+  predictions_directory: outputs/vision/predictions
+
+api:
+  allowed_input_directories:
+    - data/vision/demo
+    - data/vision/images/test
+  maximum_image_bytes: 10485760
+
+agent:
+  jid: vision@localhost
+  target_agents:
+    - supervisor@localhost
+    - historian@localhost
+    - alert@localhost
+  alert_confidence_threshold: 0.80
+
+training:
+  seed: 42
+  epochs: 20
+  batch_size: 8
+  image_size: 640
+  patience: 5
+  workers: 0
+
+dataset:
+  root: data/vision
+  name: indusguard-vision-synthetic
+  image_width: 640
+  image_height: 480
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  seed: 42

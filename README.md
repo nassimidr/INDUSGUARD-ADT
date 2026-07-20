@@ -1,5 +1,24 @@
 # INDUSGUARD-ADT
 
+## Vision industrielle — Phase 8A
+
+La branche `feature/vision` ajoute un pipeline YOLOv8 local pour les défauts de convoyeur `belt_misalignment`, `obstacle` et `material_accumulation`. Il comprend un dataset synthétique reproductible, entraînement/évaluation, inférence, un dixième agent SPADE, persistance SQLAlchemy/Alembic, six routes FastAPI, événements WebSocket et la page React `/vision`.
+
+```bash
+pip install -r requirements.txt
+python generate_vision_dataset.py
+python validate_vision_dataset.py
+python train_vision_model.py
+python evaluate_vision_model.py --split test
+python run_vision_inference.py --image data/vision/demo/camera_01_sample_belt_misalignment.jpg --equipment-id CONVEYOR-001
+python run_vision_agent_demo.py
+python run_dashboard.py
+```
+
+Les poids custom et rapports sont dans `outputs/vision/`. Le modèle utilise CPU ou GPU automatiquement. Sans poids custom, seul le mode `demo` autorise un fallback YOLO COCO, explicitement signalé comme non industriel. Voir [la documentation Phase 8A](docs/phase8a_vision.md) et [son rapport de validation](docs/phase8a_validation_report.md).
+
+Le module de vision est un prototype académique évalué principalement sur des données synthétiques ou publiques. Ses performances ne prouvent pas une validation sur un site industriel réel.
+
 ## Tableau de bord Phase 7
 
 La phase 7 ajoute une API FastAPI versionnée, 15 tables SQLite/SQLAlchemy, des migrations Alembic, un flux WebSocket et une application React/TypeScript de 12 vues. Le système reste local et ne pilote aucun équipement réel.

@@ -4,4 +4,7 @@ export interface Measurement{id:number;timestamp:string;equipment_id:string;equi
 export interface Alert{id:number;alert_id:string;timestamp:string;level:string;title:string;message:string;acknowledged:boolean}
 export interface WorkOrder{id:number;work_order_id:string;equipment_id:string;priority:string;status:string;scheduled_start:string|null;estimated_cost:number|null}
 export interface RulPrediction{id:number;timestamp:string;equipment_id:string;predicted_rul_hours:number;risk_level:string;prediction_confidence:number|null}
+export interface VisionHealth{enabled:boolean;mode:string;loaded:boolean;available:boolean;custom_model_loaded:boolean;technical_fallback:boolean;model_name:string;model_version:string;device:string;detail:string|null}
+export interface VisionDetection{id?:number;detection_id:string;equipment_id:string;camera_id:string;frame_id:string;defect_type:string;confidence:number;x_min?:number;y_min?:number;x_max?:number;y_max?:number;timestamp:string;trace_id:string;original_image_path:string;annotated_image_path:string|null;model_name:string;model_version:string}
+export interface VisionInferenceResponse{trace_id:string;frame_id:string;detections:VisionDetection[];inference_time_ms:number;custom_model_loaded:boolean;technical_fallback:boolean;annotated_image_path:string|null;prediction_json_path:string|null}
 export type RecordRow=Record<string,string|number|boolean|null|undefined>;

@@ -3,9 +3,9 @@ from sqlalchemy import inspect
 from indusguard.dashboard.models import ALL_MODELS
 
 
-def test_all_fifteen_tables_are_created(app):
+def test_all_sixteen_tables_are_created(app):
     tables = set(inspect(app.state.engine).get_table_names())
-    assert len(ALL_MODELS) == 15
+    assert len(ALL_MODELS) == 16
     assert {model.__tablename__ for model in ALL_MODELS} <= tables
 
 

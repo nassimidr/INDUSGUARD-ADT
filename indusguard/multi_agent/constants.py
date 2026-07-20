@@ -11,6 +11,7 @@ ONTOLOGIES = frozenset({
     "sensor-monitoring", "anomaly-detection", "fault-diagnosis", "rul-prediction",
     "maintenance-planning", "resource-allocation", "supervision", "alerting",
     "historian", "agent-health",
+    "industrial-vision",
 })
 PROTOCOLS = frozenset({
     "indusguard-pipeline", "fipa-request", "fipa-contract-net",
@@ -25,6 +26,7 @@ MESSAGE_TYPES = frozenset({
     "resource.failure", "supervisor.decision", "supervisor.reanalysis_request",
     "alert.created", "historian.event", "heartbeat", "agent.status",
     "processing.failure", "pipeline.completed",
+    "vision.analysis.request", "vision.detection", "vision.analysis.completed", "vision.analysis.failed",
 })
 AGENT_STATES = frozenset({"starting", "ready", "busy", "degraded", "unavailable", "stopping", "stopped"})
 CASE_STATES = (
